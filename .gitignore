@@ -7,7 +7,7 @@ env/
 node_modules/
 bundles/
 static/
-
+brewpal/webpack-stats.json
 # Compiled source #
 ###################
 *.com
