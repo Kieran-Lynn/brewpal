@@ -7,6 +7,7 @@ module.exports = {
     context: __dirname,
 
     entry: [
+        'react-hot-loader/patch',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         './app/app_staticfiles/js/react-render.js',
@@ -20,6 +21,7 @@ module.exports = {
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new BundleTracker({filename: './webpack-stats.json'}),
     ],
@@ -31,7 +33,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loaders: ['react-hot-loader', 'babel-loader?presets[]=es2015,presets[]=react']
+                loaders: ['babel-loader']
             },
         ],
 

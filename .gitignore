@@ -5,6 +5,8 @@ env/
 *.pot
 
 node_modules/
+bundles/
+static/
 
 # Compiled source #
 ###################

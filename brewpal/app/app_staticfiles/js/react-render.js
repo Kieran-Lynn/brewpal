@@ -1,17 +1,23 @@
 import ReactDOM from "react-dom";
 import React from "react";
-
-var TestApp = React.createClass({
-  render: () => {
-    return (
-      <div>
-        <h1>Oh shit! React works!</h1>
-      </div>
-    );
-  }
-});
+import Recipe from './components/recipe';
+import {AppContainer} from "react-hot-loader";
 
 ReactDOM.render(
-  React.createElement(TestApp, null),
-  document.getElementById('ReactContainer')
+    <AppContainer>
+        <Recipe/>
+    </AppContainer>,
+    document.getElementById('ReactContainer')
 );
+
+// Hot Module Replacement API
+if (module.hot) {
+    module.hot.accept('./components/recipe.js', () => {
+        ReactDOM.render(
+            <AppContainer>
+                <Recipe/>
+            </AppContainer>,
+            document.getElementById('ReactContainer')
+        );
+    });
+}
