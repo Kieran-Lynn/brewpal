@@ -1,23 +1,19 @@
-import ReactDOM from "react-dom";
-import React from "react";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {AppContainer} from 'react-hot-loader'
 import Recipe from './components/recipe';
-import {AppContainer} from "react-hot-loader";
 
-ReactDOM.render(
-    <AppContainer>
-        <Recipe/>
-    </AppContainer>,
-    document.getElementById('ReactContainer')
-);
+const render = Component => {
+    ReactDOM.render(
+        <AppContainer>
+            <Component/>
+        </AppContainer>,
+        document.getElementById('ReactContainer')
+    );
+}
 
-// Hot Module Replacement API
-if (module.hot) {
-    module.hot.accept('./components/recipe.js', () => {
-        ReactDOM.render(
-            <AppContainer>
-                <Recipe/>
-            </AppContainer>,
-            document.getElementById('ReactContainer')
-        );
-    });
+render(Recipe)
+
+if(module.hot) {
+    module.hot.accept();
 }

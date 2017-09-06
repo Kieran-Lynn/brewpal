@@ -4,7 +4,7 @@ export default class Recipe extends React.Component {
     render() {
         return (
             <div>
-                <h1>Oh shit! React231 works!</h1>
+                <h1>HOT RELOADs!</h1>
             </div>
         )
     }
