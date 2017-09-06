@@ -4,7 +4,7 @@ env/
 *.log
 *.pot
 
-.idea/*
+.idea/
 
 node_modules/
 bundles/
