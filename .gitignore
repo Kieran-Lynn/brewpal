@@ -4,10 +4,15 @@ env/
 *.log
 *.pot
 
+.idea/*
+
 node_modules/
 bundles/
 static/
 brewpal/webpack-stats.json
+
+
+
 # Compiled source #
 ###################
 *.com
