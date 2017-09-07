@@ -28,7 +28,6 @@ export class Recipe extends React.Component {
             grains: this.state.grains.concat([{grainType: "", amount: "0.0"}])
         })
     };
-
     handleDeleteGrain = (index) => {
         this.setState({
             grains: this.state.grains.filter((g, i) => index !== i)
@@ -46,7 +45,6 @@ export class Recipe extends React.Component {
             hops: this.state.hops.concat([{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}])
         })
     };
-
     handleDeleteHop = (index) => {
         this.setState({
             hops: this.state.hops.filter((g, i) => index !== i)
@@ -118,6 +116,8 @@ export class Recipe extends React.Component {
                     ))}
                     <br/>
                     <button type="button" onClick={this.handleAddGrain}>Add Grain</button>
+                    <br/>
+                    <br/>
                     <br/>
                     <br/>
                     <br/>

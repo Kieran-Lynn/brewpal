@@ -1,6 +1,7 @@
 import React from 'react'
 import TextInput from "../../shared/components/TextInput";
 import { filterNonNumber } from "../../shared/utils";
+import PropTypes from 'prop-types';
 
 export default class RecipeYeast extends React.Component {
 
@@ -40,3 +41,8 @@ export default class RecipeYeast extends React.Component {
         )
     }
 }
+
+RecipeYeast.proptypes = {
+    yeast: PropTypes.object.required,
+    handleYeastChange: PropTypes.func.required
+};
