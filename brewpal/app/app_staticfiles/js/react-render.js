@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import Recipe from './components/recipe';
+import { Recipe }from './recipe/Recipe';
 
 const render = Component => {
     ReactDOM.render(
