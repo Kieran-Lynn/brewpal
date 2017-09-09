@@ -30,9 +30,11 @@ const RecipeReducer = (state, action) => {
         case action_types.UPDATE_YEAST:
              var newYeast = {yeastType: action.yeast.yeastType, fermentationTemp: action.yeast.fermentationTemp};
             // var newState =  updateObject(state, {yeast: newYeast});
-            let newState = state;
-            newState.yeast = action.yeast;
-            return newState;
+            /* This doesnt work but if you use new yeast instead of action.yeast it does
+            * it seems like the state is being updated but the rest of the redux lifecycle doesnt think it is.
+            * So then the UI never gets new props and then you keep only getting the one letter you typed instead
+            * of them concating. Then this repeats */
+            return updateObject(state, {yeast: action.yeast});
 
         default:
             return state
