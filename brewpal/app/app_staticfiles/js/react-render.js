@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { Recipe }from './recipe/Recipe';
+import App from './recipe/App';
 
 const render = Component => {
     ReactDOM.render(
@@ -10,9 +10,9 @@ const render = Component => {
         </AppContainer>,
         document.getElementById('ReactContainer')
     );
-}
+};
 
-render(Recipe)
+render(App);
 
 if(module.hot) {
     module.hot.accept();

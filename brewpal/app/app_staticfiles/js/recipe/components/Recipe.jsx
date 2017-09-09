@@ -1,17 +1,13 @@
 import React from 'react'
-import TextInput from '../shared/components/TextInput'
-import TextArea from '../shared/components/TextArea'
-import RecipeGrain from "./components/RecipeGrain";
-import RecipeHop from "./components/RecipeHop";
-import {filterNonNumber} from "../shared/utils";
-import RecipeYeast from "./components/RecipeYeast";
+import PropTypes from 'prop-types';
+import TextInput from '../../shared/components/TextInput'
+import TextArea from '../../shared/components/TextArea'
+import RecipeGrain from "./RecipeGrain";
+import RecipeHop from "./RecipeHop";
+import RecipeYeast from "./RecipeYeast";
 
-export class Recipe extends React.Component {
+export default class Recipe extends React.Component {
     state = {
-        recipeName: "",
-        style: "",
-        batchSize: 0.0,
-        description: "",
         grains: [{grainType: "", amount: "0.0"}],
         hops: [{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}],
         yeast: {yeastType: "", fermentationTemp: ""}
@@ -59,10 +55,6 @@ export class Recipe extends React.Component {
 
     render() {
         const {
-            recipeName,
-            style,
-            batchSize,
-            description,
             grains,
             hops,
             yeast
@@ -75,26 +67,26 @@ export class Recipe extends React.Component {
                     <TextInput
                         label="Recipe Name :"
                         name="recipeName"
-                        value={recipeName}
-                        onChange={event => this.setState({recipeName: event.target.value})}
+                        value={this.props.recipeName}
+                        onChange={event => this.props.handleRecipeNameChange(event.target.value)}
                     />
                     <TextInput
                         label="Style :"
                         name="style"
-                        value={style}
-                        onChange={event => this.setState({style: event.target.value})}
+                        value={this.props.style}
+                        onChange={event => this.props.handleStyleChange(event.target.value)}
                     />
                     <TextInput
                         label="Batch Size (gal):"
                         name="batchSize"
-                        value={batchSize}
-                        onChange={event => this.setState({batchSize: filterNonNumber(event.target.value)})}
+                        value={this.props.batchSize}
+                        onChange={event => this.props.handleBatchSizeChange(event.target.value)}
                     />
                     <TextArea
                         label="Description :"
                         name="description"
-                        value={description}
-                        onChange={event => this.setState({description: event.target.value})}
+                        value={this.props.description}
+                        onChange={event => this.props.handleDescriptionChange(event.target.value)}
                     />
                     <br/>
                     <RecipeYeast
@@ -138,3 +130,13 @@ export class Recipe extends React.Component {
     }
 }
 
+Recipe.PropTypes = {
+    batchSize: PropTypes.string.required,
+    handleBatchSizeChange: PropTypes.func.required,
+    description: PropTypes.string.required,
+    handleDescriptionChange: PropTypes.func.required,
+    recipeName: PropTypes.string.required,
+    handleRecipeNameChange: PropTypes.func.required,
+    style: PropTypes.string.required,
+    handleStyleChange: PropTypes.func.required
+}
