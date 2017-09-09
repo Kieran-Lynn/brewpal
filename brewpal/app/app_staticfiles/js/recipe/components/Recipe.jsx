@@ -4,13 +4,12 @@ import TextInput from '../../shared/components/TextInput'
 import TextArea from '../../shared/components/TextArea'
 import RecipeGrain from "./RecipeGrain";
 import RecipeHop from "./RecipeHop";
-import RecipeYeast from "./RecipeYeast";
+import RecipeYeastContainer from "../containers/RecipeYeastContainer";
 
 export default class Recipe extends React.Component {
     state = {
         grains: [{grainType: "", amount: "0.0"}],
-        hops: [{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}],
-        yeast: {yeastType: "", fermentationTemp: ""}
+        hops: [{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}]
     };
 
     handleGrainChange = (index, updatedGrain) => {
@@ -47,17 +46,10 @@ export default class Recipe extends React.Component {
         });
     };
 
-    handleYeastChange = (updatedYeast) => {
-        this.setState({
-            yeast: updatedYeast
-        })
-    };
-
     render() {
         const {
             grains,
-            hops,
-            yeast
+            hops
         } = this.state;
 
         return (
@@ -89,10 +81,7 @@ export default class Recipe extends React.Component {
                         onChange={event => this.props.handleDescriptionChange(event.target.value)}
                     />
                     <br/>
-                    <RecipeYeast
-                        yeast={yeast}
-                        handleYeastChange={this.handleYeastChange}
-                    />
+                    <RecipeYeastContainer/>
                     <br/>
                     <br/>
                     <br/>

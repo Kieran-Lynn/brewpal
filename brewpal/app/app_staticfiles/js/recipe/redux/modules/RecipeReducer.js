@@ -5,7 +5,8 @@ const action_types =
         UPDATE_BATCH_SIZE: 'UPDATE_BATCH_SIZE',
         UPDATE_DESCRIPTION: 'UPDATE_DESCRIPTION',
         UPDATE_RECIPE_NAME: 'UPDATE_RECIPE_NAME',
-        UPDATE_STYLE: 'UPDATE_STYLE'
+        UPDATE_STYLE: 'UPDATE_STYLE',
+        UPDATE_YEAST: 'UPDATE_YEAST'
     };
 
 const updateObject = (oldObject, newValues) => {
@@ -26,10 +27,18 @@ const RecipeReducer = (state, action) => {
         case action_types.UPDATE_STYLE:
             return updateObject(state, {style: action.style});
 
+        case action_types.UPDATE_YEAST:
+             var newYeast = {yeastType: action.yeast.yeastType, fermentationTemp: action.yeast.fermentationTemp};
+            // var newState =  updateObject(state, {yeast: newYeast});
+            let newState = state;
+            newState.yeast = action.yeast;
+            return newState;
+
         default:
             return state
     }
-}; export default RecipeReducer
+};
+export default RecipeReducer
 
 export const actions = {
     updateRecipeName: (name) => {
@@ -54,6 +63,12 @@ export const actions = {
         return {
             type: action_types.UPDATE_DESCRIPTION,
             description
+        }
+    },
+    updateYeast: (yeast) => {
+        return {
+            type: action_types.UPDATE_YEAST,
+            yeast
         }
     }
 };
