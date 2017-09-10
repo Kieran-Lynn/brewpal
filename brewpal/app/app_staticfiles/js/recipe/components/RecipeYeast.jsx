@@ -5,24 +5,24 @@ import PropTypes from 'prop-types';
 
 export default class RecipeYeast extends React.Component {
 
-    updateYeastState = (updatedYeast) => {
+    updateYeastStore = (updatedYeast) => {
         this.props.handleYeastChange(updatedYeast)
     };
 
     handleYeastTypeChange = (event) => {
         const updatedYeast = this.props.yeast;
         updatedYeast.yeastType = event.target.value;
-        this.updateYeastState(updatedYeast);
+        this.updateYeastStore(updatedYeast);
     };
 
     handleYeastFermTempChange = (event) => {
         const updatedYeast = this.props.yeast;
         updatedYeast.fermentationTemp = filterNonNumber(event.target.value);
-        this.updateYeastState(updatedYeast);
+        this.updateYeastStore(updatedYeast);
     };
 
     render() {
-        const yeast = this.props.yeast;
+        let yeast = this.props.yeast;
         return (
             <div>
                 <TextInput
@@ -32,7 +32,7 @@ export default class RecipeYeast extends React.Component {
                     onChange={this.handleYeastTypeChange}
                 />
                 <TextInput
-                    label="Fermentation Temp (F )"
+                    label="Fermentation Temp (F)"
                     name="fermTemp"
                     value={yeast.fermentationTemp}
                     onChange={this.handleYeastFermTempChange}

@@ -1,0 +1,89 @@
+0,Acid Malt
+1,Amber Dry Extract
+2,Amber Liquid Extract
+3,Amber Malt
+4,Aromatic Malt
+5,Barley Hulls
+6,Barley, Flaked
+7,Barley, Raw
+8,Barley, Torrefied
+9,Biscuit Malt
+10,Black (Patent) Malt
+11,Black Barley (Stout)
+12,Brown Malt
+13,Brown Sugar, Dark
+14,Brown Sugar, Light
+15,Brumalt
+16,Candi Sugar, Amber
+17,Candi Sugar, Clear
+18,Candi Sugar, Dark
+19,Cane (Beet) Sugar
+20,Cara-Pils/Dextrine
+21,Caraamber
+22,Carafoam
+23,Caramel/Crystal Malt &#8211; 10L
+24,Caramel/Crystal Malt &#8211; 20L
+25,Caramel/Crystal Malt &#8211; 30L
+26,Caramel/Crystal Malt &#8211; 40L
+27,Caramel/Crystal Malt &#8211; 60L
+28,Caramel/Crystal Malt &#8211; 80L
+29,Caramel/Crystal Malt -120L
+30,Caramunich Malt
+31,Carared
+32,Caravienne Malt
+33,Chocolate Malt
+34,Chocolate Malt
+35,Corn Sugar (Dextrose)
+36,Corn Syrup
+37,Corn, Flaked
+38,Dark Dry Extract
+39,Dark Liquid Extract
+40,Dememera Sugar
+41,Extra Light Dry Extract
+42,Grits
+43,Honey
+44,Invert Sugar
+45,Light Dry Extract
+46,Maple Syrup
+47,Melanoiden Malt
+48,Mild Malt
+49,Milk Sugar (Lactose)
+50,Molasses
+51,Munich Malt
+52,Munich Malt &#8211; 10L
+53,Munich Malt &#8211; 20L
+54,Oats, Flaked
+55,Oats, Malted
+56,Pale Liquid Extract
+57,Pale Malt (2 Row) Bel
+58,Pale Malt (2 Row) UK
+59,Pale Malt (2 Row) US
+60,Pale Malt (6 Row) US
+61,Peat Smoked Malt
+62,Pilsner (2 Row) Bel
+63,Pilsner (2 Row) Ger
+64,Pilsner (2 Row) UK
+65,Pilsner Liquid Extract
+66,Rice Extract Syrup
+67,Rice Hulls
+68,Rice, Flaked
+69,Roasted Barley
+70,Rye Malt
+71,Rye, Flaked
+72,Smoked Malt
+73,Special B Malt
+74,Special Roast
+75,Sugar, Table (Sucrose)
+76,Toasted Malt
+77,Turbinado
+78,Victory Malt
+79,Vienna Malt
+80,Wheat Dry Extract
+81,Wheat Liquid Extract
+82,Wheat Malt, Bel
+83,Wheat Malt, Dark
+84,Wheat Malt, Ger
+85,Wheat, Flaked
+86,Wheat, Roasted
+87,Wheat, Torrified
+88,White Wheat Malt

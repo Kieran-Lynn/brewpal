@@ -2,31 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import TextInput from '../../shared/components/TextInput'
 import TextArea from '../../shared/components/TextArea'
-import RecipeGrain from "./RecipeGrain";
 import RecipeHop from "./RecipeHop";
 import RecipeYeastContainer from "../containers/RecipeYeastContainer";
+import RecipeGrainContainer from "../containers/RecipeGrainContainer";
 
 export default class Recipe extends React.Component {
     state = {
-        grains: [{grainType: "", amount: "0.0"}],
         hops: [{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}]
     };
 
-    handleGrainChange = (index, updatedGrain) => {
-        const newGrains = this.state.grains;
-        newGrains[index] = updatedGrain;
-        this.setState({grains: newGrains});
-    };
-
     handleAddGrain = () => {
-        this.setState({
-            grains: this.state.grains.concat([{grainType: "", amount: "0.0"}])
-        })
+        // this.setState({
+        //     grains: this.state.grains.concat([{grainType: "", amount: "0.0"}])
+        // })
     };
     handleDeleteGrain = (index) => {
-        this.setState({
-            grains: this.state.grains.filter((g, i) => index !== i)
-        });
+        // this.setState({
+        //     grains: this.state.grains.filter((g, i) => index !== i)
+        // });
     };
 
     handleHopChange = (index, updatedHop) => {
@@ -85,16 +78,16 @@ export default class Recipe extends React.Component {
                     <br/>
                     <br/>
                     <br/>
-                    {grains.map((grain, i) => (
-                        <RecipeGrain
-                            grain={grain}
-                            key={i}
-                            index={i}
-                            disableDelete={grains.length === 1}
-                            handleGrainChange={this.handleGrainChange}
-                            handleDeleteGrain={this.handleDeleteGrain}
-                        />
-                    ))}
+                    <RecipeGrainContainer />
+                    {/*{grains.map((grain, i) => (*/}
+                        {/*<RecipeGrain*/}
+                            {/*grain={grain}*/}
+                            {/*key={i}*/}
+                            {/*disableDelete={grains.length === 1}*/}
+                            {/*handleGrainChange={this.handleGrainChange}*/}
+                            {/*handleDeleteGrain={this.handleDeleteGrain}*/}
+                        {/*/>*/}
+                    {/*))}*/}
                     <br/>
                     <button type="button" onClick={this.handleAddGrain}>Add Grain</button>
                     <br/>
@@ -128,4 +121,4 @@ Recipe.PropTypes = {
     handleRecipeNameChange: PropTypes.func.required,
     style: PropTypes.string.required,
     handleStyleChange: PropTypes.func.required
-}
+};

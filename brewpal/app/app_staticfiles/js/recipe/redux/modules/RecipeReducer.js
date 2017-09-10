@@ -6,7 +6,8 @@ const action_types =
         UPDATE_DESCRIPTION: 'UPDATE_DESCRIPTION',
         UPDATE_RECIPE_NAME: 'UPDATE_RECIPE_NAME',
         UPDATE_STYLE: 'UPDATE_STYLE',
-        UPDATE_YEAST: 'UPDATE_YEAST'
+        UPDATE_YEAST: 'UPDATE_YEAST',
+        UPDATE_GRAINS: 'UPDATE_GRAINS'
     };
 
 const updateObject = (oldObject, newValues) => {
@@ -28,13 +29,14 @@ const RecipeReducer = (state, action) => {
             return updateObject(state, {style: action.style});
 
         case action_types.UPDATE_YEAST:
-             var newYeast = {yeastType: action.yeast.yeastType, fermentationTemp: action.yeast.fermentationTemp};
-            // var newState =  updateObject(state, {yeast: newYeast});
-            /* This doesnt work but if you use new yeast instead of action.yeast it does
-            * it seems like the state is being updated but the rest of the redux lifecycle doesnt think it is.
-            * So then the UI never gets new props and then you keep only getting the one letter you typed instead
-            * of them concating. Then this repeats */
-            return updateObject(state, {yeast: action.yeast});
+            const newYeast = {yeastType: action.yeast.yeastType, fermentationTemp: action.yeast.fermentationTemp};
+            return updateObject(state, {yeast: newYeast});
+
+        case action_types.UPDATE_GRAINS:
+            const updatedGrains = state.grains;
+            updatedGrains[action.index] = action.grain;
+
+            return updateObject(state, {grains: updatedGrains})
 
         default:
             return state
@@ -71,6 +73,13 @@ export const actions = {
         return {
             type: action_types.UPDATE_YEAST,
             yeast
+        }
+    },
+    updateGrain: (grain, index) => {
+        return {
+            type: action_types.UPDATE_GRAINS,
+            grain,
+            index
         }
     }
 };

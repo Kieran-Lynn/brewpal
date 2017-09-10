@@ -6,7 +6,7 @@ const initialState = {
     style: "",
     batchSize: 0.0,
     description: "",
-    grains: [{grainType: "", amount: "0.0"}],
+    grains: [{grainId: "", grainType: "", amount: "0.0"}],
     hops: [{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}],
     yeast: {yeastType: "", fermentationTemp: ""}
 };
