@@ -7,7 +7,9 @@ const action_types =
         UPDATE_RECIPE_NAME: 'UPDATE_RECIPE_NAME',
         UPDATE_STYLE: 'UPDATE_STYLE',
         UPDATE_YEAST: 'UPDATE_YEAST',
-        UPDATE_GRAINS: 'UPDATE_GRAINS'
+        UPDATE_GRAINS: 'UPDATE_GRAINS',
+        ADD_GRAIN: 'ADD_GRAIN',
+        DELETE_GRAIN: 'DELETE_GRAIN'
     };
 
 const updateObject = (oldObject, newValues) => {
@@ -29,14 +31,29 @@ const RecipeReducer = (state, action) => {
             return updateObject(state, {style: action.style});
 
         case action_types.UPDATE_YEAST:
-            const newYeast = {yeastType: action.yeast.yeastType, fermentationTemp: action.yeast.fermentationTemp};
-            return updateObject(state, {yeast: newYeast});
+            return updateObject(state, {yeast: action.yeast});
 
         case action_types.UPDATE_GRAINS:
-            const updatedGrains = state.grains;
-            updatedGrains[action.index] = action.grain;
+            let updatedGrains = state.grains.map((grain, i) => {
+                if (i === action.index) {
+                    return action.grain
+                }
+                return grain;
+            });
 
-            return updateObject(state, {grains: updatedGrains})
+            return updateObject(state, {grains: updatedGrains});
+
+        case action_types.ADD_GRAIN:
+            let emptyGrain = {grainId: "", grainType: "", amount: "0.0"};
+            let copiedGrains = state.grains.map((grain) => {return grain});
+            updatedGrains = copiedGrains.concat(emptyGrain);
+
+            return updateObject(state, {grains: updatedGrains});
+
+        case action_types.DELETE_GRAIN:
+            updatedGrains = state.grains.filter(g => g !== action.grain)
+
+            return updateObject(state, {grains: updatedGrains});
 
         default:
             return state
@@ -80,6 +97,17 @@ export const actions = {
             type: action_types.UPDATE_GRAINS,
             grain,
             index
+        }
+    },
+    addGrain: () => {
+        return {
+            type: action_types.ADD_GRAIN
+        }
+    },
+    deleteGrain: (grain) => {
+        return{
+            type: action_types.DELETE_GRAIN,
+            grain
         }
     }
 };

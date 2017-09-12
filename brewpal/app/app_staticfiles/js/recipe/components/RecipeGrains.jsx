@@ -6,26 +6,29 @@ import Select from "../../shared/components/Select";
 
 export default class RecipeGrains extends React.Component {
 
-    updateGrainState = (updatedGrain, index) => {
+    updateGrainStore = (updatedGrain, index) => {
         this.props.handleGrainChange(updatedGrain, index)
     };
 
     handleGrainTypeChange = (event, index) => {
-        const updatedGrain = this.props.grains[index]
-        updatedGrain.grainType = event.target.value;
-        this.updateGrainState(updatedGrain, index);
+        const updatedGrain = this.props.grains[index];
+        updatedGrain.grainType = event.target.options[event.target.selectedIndex].text;
+        updatedGrain.grainId = event.target.value;
+
+        this.updateGrainStore(updatedGrain, index);
     };
 
     handleGrainAmountChange = (event, index) => {
-        const updatedGrain = this.props.grains[index]
+        const updatedGrain = this.props.grains[index];
         updatedGrain.amount = filterNonNumber(event.target.value);
-        this.updateGrainState(updatedGrain, index);
+        this.updateGrainStore(updatedGrain, index);
     };
 
     buildGrainComponent = (grain, index) => {
         return (
             <div key={index}>
                 <Select
+                    index={index}
                     label="Grain"
                     name="grainType"
                     value={grain.grainId}
@@ -38,6 +41,13 @@ export default class RecipeGrains extends React.Component {
                     value={grain.amount}
                     onChange={(event) => this.handleGrainAmountChange(event, index)}
                 />
+                <button
+                    type="button"
+                    disabled={this.props.disableDelete}
+                    onClick={() => this.props.handleDeleteGrain(grain)}
+                >
+                    DeleteGrain
+                </button>
             </div>
         )
     };
@@ -54,11 +64,6 @@ export default class RecipeGrains extends React.Component {
                 {grains.map((grain, i) => (
                     this.buildGrainComponent(grain, i)
                 ))}
-                <button
-                    type="button"
-                    disabled={this.props.disableDelete}
-                    onClick={() => this.props.handleDeleteGrain(this.props.index)}>Delete Grain
-                </button>
             </div>
         )
     }

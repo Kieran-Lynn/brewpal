@@ -19,7 +19,7 @@ export default class Select extends React.Component {
                 <select
                     name={this.props.name}
                     value={this.props.value}
-                    onChange={this.props.handleOnChange}
+                    onChange={(event) => this.props.onChange(event, this.props.index)}
                 >
                     {this.getOptionElements()}
                 </select>
@@ -30,8 +30,9 @@ export default class Select extends React.Component {
 
 Select.PropTypes = {
     label: PropTypes.string,
+    index: PropTypes.number.required,
     name: PropTypes.string.required,
     value: PropTypes.string.required,
     options: PropTypes.array.required,
-    handleOnChange: PropTypes.func.required
+    onChange: PropTypes.func.required
 }

@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleGrainChange: (grain, index) => {
             dispatch(actions.updateGrain(grain, index))
+        },
+        handleDeleteGrain: (grain) => {
+            dispatch(actions.deleteGrain(grain))
         }
     }
 };

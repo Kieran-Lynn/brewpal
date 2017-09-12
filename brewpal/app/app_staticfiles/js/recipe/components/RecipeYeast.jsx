@@ -10,14 +10,12 @@ export default class RecipeYeast extends React.Component {
     };
 
     handleYeastTypeChange = (event) => {
-        const updatedYeast = this.props.yeast;
-        updatedYeast.yeastType = event.target.value;
+        let updatedYeast = Object.assign({}, this.props.yeast, {yeastType: event.target.value});
         this.updateYeastStore(updatedYeast);
     };
 
     handleYeastFermTempChange = (event) => {
-        const updatedYeast = this.props.yeast;
-        updatedYeast.fermentationTemp = filterNonNumber(event.target.value);
+        let updatedYeast =  Object.assign({}, this.props.yeast, {fermentationTemp: filterNonNumber(event.target.value)});
         this.updateYeastStore(updatedYeast);
     };
 

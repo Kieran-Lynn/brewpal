@@ -1,5 +1,5 @@
-import { connect } from 'react-redux'
-import { actions } from '../redux/modules/RecipeReducer'
+import {connect} from 'react-redux'
+import {actions} from '../redux/modules/RecipeReducer'
 import Recipe from '../components/Recipe'
 
 const mapStateToProps = (state) => {
@@ -27,6 +27,10 @@ const mapDispatchToProps = (dispatch) => {
 
         handleStyleChange: (style) => {
             dispatch(actions.updateStyle(style))
+        },
+
+        handleAddGrain: () => {
+            dispatch(actions.addGrain())
         }
     }
 };
