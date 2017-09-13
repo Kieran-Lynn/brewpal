@@ -2,44 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import TextInput from '../../shared/components/TextInput'
 import TextArea from '../../shared/components/TextArea'
-import RecipeHop from "./RecipeHop";
 import RecipeYeastContainer from "../containers/RecipeYeastContainer";
-import RecipeGrainContainer from "../containers/RecipeGrainContainer";
+import RecipeGrainsContainer from "../containers/RecipeGrainsContainer";
+import RecipeHopsContainer from "../containers/RecipeHopsContainer";
 
 export default class Recipe extends React.Component {
-    state = {
-        hops: [{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}]
-    };
-
-    handleDeleteGrain = (index) => {
-        // this.setState({
-        //     grains: this.state.grains.filter((g, i) => index !== i)
-        // });
-    };
-
-    handleHopChange = (index, updatedHop) => {
-        const newHops = this.state.hops;
-        newHops[index] = updatedHop;
-        this.setState({hops: newHops});
-    };
-
-    handleAddHop = () => {
-        this.setState({
-            hops: this.state.hops.concat([{hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"}])
-        })
-    };
-    handleDeleteHop = (index) => {
-        this.setState({
-            hops: this.state.hops.filter((g, i) => index !== i)
-        });
-    };
-
     render() {
-        const {
-            grains,
-            hops
-        } = this.state;
-
         return (
             <div>
                 <h1>Recipe</h1>
@@ -73,25 +41,14 @@ export default class Recipe extends React.Component {
                     <br/>
                     <br/>
                     <br/>
-                    <RecipeGrainContainer />
-                    <br/>
-                    <button type="button" onClick={this.props.handleAddGrain}>Add Grain</button>
+                    <RecipeGrainsContainer />
                     <br/>
                     <br/>
                     <br/>
                     <br/>
                     <br/>
-                    {hops.map((hop, i) => (
-                        <RecipeHop
-                            hop={hop}
-                            key={i}
-                            index={i}
-                            disableDelete={hops.length === 1}
-                            handleHopChange={this.handleHopChange}
-                            handleDeleteHop={this.handleDeleteHop}
-                        />
-                    ))}
-                    <button type="button" onClick={this.handleAddHop}>Add Hop</button>
+                    <br/>
+                    <RecipeHopsContainer />
                 </form>
             </div>
         )
@@ -106,6 +63,5 @@ Recipe.PropTypes = {
     recipeName: PropTypes.string.required,
     handleRecipeNameChange: PropTypes.func.required,
     style: PropTypes.string.required,
-    handleStyleChange: PropTypes.func.required,
-    handleAddGrain: PropTypes.func.required
+    handleStyleChange: PropTypes.func.required
 };

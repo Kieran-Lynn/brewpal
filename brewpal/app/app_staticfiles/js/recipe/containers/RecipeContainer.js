@@ -28,10 +28,6 @@ const mapDispatchToProps = (dispatch) => {
         handleStyleChange: (style) => {
             dispatch(actions.updateStyle(style))
         },
-
-        handleAddGrain: () => {
-            dispatch(actions.addGrain())
-        }
     }
 };
 

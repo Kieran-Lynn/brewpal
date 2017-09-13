@@ -64,14 +64,16 @@ export default class RecipeGrains extends React.Component {
                 {grains.map((grain, i) => (
                     this.buildGrainComponent(grain, i)
                 ))}
+                <button type="button" onClick={this.props.handleAddGrain}>Add Grain</button>
             </div>
         )
     }
 }
 
 RecipeGrains.proptypes = {
-    grains: PropTypes.object.required,
+    grains: PropTypes.array.required,
     handleDeleteGrain: PropTypes.func.required,
     handleGrainChange: PropTypes.func.required,
+    handleAddGrain: PropTypes.func.required,
     disableDelete: PropTypes.bool.required
 };

@@ -9,7 +9,10 @@ const action_types =
         UPDATE_YEAST: 'UPDATE_YEAST',
         UPDATE_GRAINS: 'UPDATE_GRAINS',
         ADD_GRAIN: 'ADD_GRAIN',
-        DELETE_GRAIN: 'DELETE_GRAIN'
+        DELETE_GRAIN: 'DELETE_GRAIN',
+        UPDATE_HOPS: 'UPDATE_HOPS',
+        ADD_HOP: 'ADD_HOP',
+        DELETE_HOP: 'DELETE_HOP'
     };
 
 const updateObject = (oldObject, newValues) => {
@@ -45,7 +48,9 @@ const RecipeReducer = (state, action) => {
 
         case action_types.ADD_GRAIN:
             let emptyGrain = {grainId: "", grainType: "", amount: "0.0"};
-            let copiedGrains = state.grains.map((grain) => {return grain});
+            let copiedGrains = state.grains.map((grain) => {
+                return grain
+            });
             updatedGrains = copiedGrains.concat(emptyGrain);
 
             return updateObject(state, {grains: updatedGrains});
@@ -54,6 +59,33 @@ const RecipeReducer = (state, action) => {
             updatedGrains = state.grains.filter(g => g !== action.grain)
 
             return updateObject(state, {grains: updatedGrains});
+
+        /***************hops*****/
+
+
+        case action_types.UPDATE_HOPS:
+            let updatedHops = state.hops.map((hop, i) => {
+                if (i === action.index) {
+                    return action.hop
+                }
+                return hop;
+            });
+
+            return updateObject(state, {hops: updatedHops});
+
+        case action_types.ADD_HOP:
+            let emptyHop = {hopType: "", alphaAcid: "", amount: "0.0", time: "", hopUse: "boil"};
+            let copiedHops = state.hops.map((hop) => {
+                return hop
+            });
+            updatedHops = copiedHops.concat(emptyHop);
+
+            return updateObject(state, {hops: updatedHops});
+
+        case action_types.DELETE_HOP:
+            updatedHops = state.hops.filter(g => g !== action.hop)
+
+            return updateObject(state, {hops: updatedHops});
 
         default:
             return state
@@ -105,9 +137,27 @@ export const actions = {
         }
     },
     deleteGrain: (grain) => {
-        return{
+        return {
             type: action_types.DELETE_GRAIN,
             grain
+        }
+    },
+    updateHop: (hop, index) => {
+        return {
+            type: action_types.UPDATE_HOPS,
+            hop,
+            index
+        }
+    },
+    addHop: () => {
+        return {
+            type: action_types.ADD_HOP
+        }
+    },
+    deleteHop: (hop) => {
+        return {
+            type: action_types.DELETE_HOP,
+            hop
         }
     }
 };

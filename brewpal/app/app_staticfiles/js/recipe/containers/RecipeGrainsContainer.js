@@ -16,13 +16,16 @@ const mapDispatchToProps = (dispatch) => {
         },
         handleDeleteGrain: (grain) => {
             dispatch(actions.deleteGrain(grain))
+        },
+        handleAddGrain: () => {
+            dispatch(actions.addGrain())
         }
     }
 };
 
-const RecipeGrainContainer = connect(
+const RecipeGrainsContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(RecipeGrains);
 
-export default RecipeGrainContainer
+export default RecipeGrainsContainer
