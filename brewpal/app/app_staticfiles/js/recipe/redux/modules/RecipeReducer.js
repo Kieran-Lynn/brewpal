@@ -60,9 +60,7 @@ const RecipeReducer = (state, action) => {
 
             return updateObject(state, {grains: updatedGrains});
 
-        /***************hops*****/
-
-
+        /***************HOPS*************/
         case action_types.UPDATE_HOPS:
             let updatedHops = state.hops.map((hop, i) => {
                 if (i === action.index) {
