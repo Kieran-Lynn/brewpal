@@ -25,13 +25,13 @@ export default class RecipeYeast extends React.Component {
             <div>
                 <TextInput
                     label="Yeast :"
-                    name="yeastType"
+                    name="yeast"
                     value={yeast.yeastType}
                     onChange={this.handleYeastTypeChange}
                 />
                 <TextInput
                     label="Fermentation Temp (F)"
-                    name="fermTemp"
+                    name="fermentation_temp"
                     value={yeast.fermentationTemp}
                     onChange={this.handleYeastFermTempChange}
                 />

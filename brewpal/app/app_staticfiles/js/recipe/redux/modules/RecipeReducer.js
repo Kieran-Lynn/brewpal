@@ -36,6 +36,7 @@ const RecipeReducer = (state, action) => {
         case action_types.UPDATE_YEAST:
             return updateObject(state, {yeast: action.yeast});
 
+        /***************GRAINS*************/
         case action_types.UPDATE_GRAINS:
             let updatedGrains = state.grains.map((grain, i) => {
                 if (i === action.index) {
@@ -47,7 +48,7 @@ const RecipeReducer = (state, action) => {
             return updateObject(state, {grains: updatedGrains});
 
         case action_types.ADD_GRAIN:
-            let emptyGrain = {grainId: "", grainType: "", amount: "0.0"};
+            let emptyGrain = {grainType: "", amount: "0.0"};
             let copiedGrains = state.grains.map((grain) => {
                 return grain
             });

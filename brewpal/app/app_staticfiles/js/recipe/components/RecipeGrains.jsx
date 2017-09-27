@@ -12,8 +12,7 @@ export default class RecipeGrains extends React.Component {
 
     handleGrainTypeChange = (event, index) => {
         const updatedGrain = this.props.grains[index];
-        updatedGrain.grainType = event.target.options[event.target.selectedIndex].text;
-        updatedGrain.grainId = event.target.value;
+        updatedGrain.grainType = event.target.value;
 
         this.updateGrainStore(updatedGrain, index);
     };
@@ -31,7 +30,7 @@ export default class RecipeGrains extends React.Component {
                     index={index}
                     label="Grain"
                     name="grainType"
-                    value={grain.grainId}
+                    value={grain.grainType}
                     options={this.buildGrainOptions()}
                     onChange={(event) => this.handleGrainTypeChange(event, index)}
                 />

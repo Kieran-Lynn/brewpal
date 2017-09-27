@@ -72,6 +72,8 @@ export default class RecipeHops extends React.Component {
                     >
                         <option value="boil">Boil</option>
                         <option value="dryHop">Dry Hop</option>
+                        <option value="whirlpool">Whirlpool</option>
+                        <option value="hopback">Hopback</option>
                     </select>
                     <button
                         type="button"

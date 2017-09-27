@@ -6,12 +6,14 @@ var BundleTracker = require('webpack-bundle-tracker')
 module.exports = {
     context: __dirname,
 
-    entry: [
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        './app/app_staticfiles/js/react-render.js',
-    ],
+    entry:{
+        recipe: [
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?http://localhost:3000',
+            'webpack/hot/only-dev-server',
+            './app/app_staticfiles/js/react-render.js'
+        ]
+    },
 
     output: {
         path: path.resolve('./app/app_staticfiles/bundles/'),

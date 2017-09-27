@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import serializeForm from 'form-serialize'
+import axios from 'axios'
+import cookies from 'browser-cookies'
 import TextInput from '../../shared/components/TextInput'
 import TextArea from '../../shared/components/TextArea'
 import RecipeYeastContainer from "../containers/RecipeYeastContainer";
@@ -7,14 +10,39 @@ import RecipeGrainsContainer from "../containers/RecipeGrainsContainer";
 import RecipeHopsContainer from "../containers/RecipeHopsContainer";
 
 export default class Recipe extends React.Component {
+    saveRecipe = (event) => {
+        event.preventDefault();
+        const data = serializeForm(event.target,{ hash: true });
+        data['grains'] = [];
+        for (let i=0; i<data.grainType.length; i++){
+            let grainObject = {};
+            grainObject['grain_type'] = data.grainType[i];
+            grainObject['amount'] = data.grainAmount[i];
+            data.grains.push(grainObject)
+        }
+        delete data['hopUse'];
+        delete data['hopAmount'];
+        delete data['grainAmount'];
+        delete data['grainType'];
+        console.log(data);
+        const csrftoken = cookies.get('csrftoken');
+        console.log(data);
+        axios.post("/api/beers", data, { headers: {'X-CSRFToken' : csrftoken}}).then(response => {
+
+        }).catch(error => {
+
+        });
+
+    };
+
     render() {
         return (
             <div>
                 <h1>Recipe</h1>
-                <form>
+                <form onSubmit={this.saveRecipe}>
                     <TextInput
                         label="Recipe Name :"
-                        name="recipeName"
+                        name="name"
                         value={this.props.recipeName}
                         onChange={event => this.props.handleRecipeNameChange(event.target.value)}
                     />
@@ -26,7 +54,7 @@ export default class Recipe extends React.Component {
                     />
                     <TextInput
                         label="Batch Size (gal):"
-                        name="batchSize"
+                        name="batch_size"
                         value={this.props.batchSize}
                         onChange={event => this.props.handleBatchSizeChange(event.target.value)}
                     />
@@ -49,6 +77,7 @@ export default class Recipe extends React.Component {
                     <br/>
                     <br/>
                     <RecipeHopsContainer />
+                    <button type="submit">Save Recipe</button>
                 </form>
             </div>
         )
