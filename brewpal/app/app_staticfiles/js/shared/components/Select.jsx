@@ -1,11 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import {
+    ControlLabel,
+    FormControl,
+    FormGroup
+} from "react-bootstrap";
 
 export default class Select extends React.Component {
 
     getOptionElements = () => {
         let options = [];
-        for(let option of this.props.options){
+        for (let option of this.props.options) {
             options.push(<option key={option.value} value={option.value}>{option.option}</option>)
         }
 
@@ -14,16 +19,16 @@ export default class Select extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.props.label}
-                <select
+            <FormGroup className="col-md-3">
+                <ControlLabel>{this.props.label}</ControlLabel>
+                <FormControl componentClass="select" placeholder="select">
                     name={this.props.name}
                     value={this.props.value}
                     onChange={(event) => this.props.onChange(event, this.props.index)}
-                >
+                    >
                     {this.getOptionElements()}
-                </select>
-            </div>
+                </FormControl>
+            </FormGroup>
         )
     }
 }

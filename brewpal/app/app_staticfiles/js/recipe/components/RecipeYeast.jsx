@@ -22,7 +22,7 @@ export default class RecipeYeast extends React.Component {
     render() {
         let yeast = this.props.yeast;
         return (
-            <div>
+            <div className="row">
                 <TextInput
                     label="Yeast :"
                     name="yeast"

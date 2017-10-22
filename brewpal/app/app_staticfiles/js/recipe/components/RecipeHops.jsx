@@ -2,6 +2,7 @@ import React from 'react'
 import TextInput from "../../shared/components/TextInput";
 import {filterNonNumber} from "../../shared/utils";
 import PropTypes from 'prop-types';
+import {Button} from "react-bootstrap";
 
 export default class RecipeHops extends React.Component {
     updateHopState = (updatedHop, index) => {
@@ -40,7 +41,7 @@ export default class RecipeHops extends React.Component {
 
     buildHopComponent = (hop, index) => {
         return (
-            <div key={index}>
+            <div key={index} className="row">
                 <TextInput
                         label="Hop: "
                         name="hopType"
@@ -75,11 +76,11 @@ export default class RecipeHops extends React.Component {
                         <option value="whirlpool">Whirlpool</option>
                         <option value="hopback">Hopback</option>
                     </select>
-                    <button
+                    <Button
                         type="button"
                         disabled={this.props.disableDelete}
                         onClick={() => this.props.handleDeleteHop(hop)}>Delete Hop
-                    </button>
+                    </Button>
             </div>
         )
     };
@@ -91,9 +92,9 @@ export default class RecipeHops extends React.Component {
                 {hops.map((hop, index) => (
                     this.buildHopComponent(hop, index)
                     ))}
-                <button type="button" onClick={this.props.handleAddHop}>
+                <Button type="button" onClick={this.props.handleAddHop}>
                     Add Hop
-                </button>
+                </Button>
             </div>
         )
     }

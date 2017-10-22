@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextInput from "../../shared/components/TextInput";
 import {filterNonNumber, getGrainOptions} from "../../shared/utils";
 import Select from "../../shared/components/Select";
+import {Button} from "react-bootstrap";
 
 export default class RecipeGrains extends React.Component {
 
@@ -25,7 +26,7 @@ export default class RecipeGrains extends React.Component {
 
     buildGrainComponent = (grain, index) => {
         return (
-            <div key={index}>
+            <div key={index} className="row">
                 <Select
                     index={index}
                     label="Grain"
@@ -40,13 +41,13 @@ export default class RecipeGrains extends React.Component {
                     value={grain.amount}
                     onChange={(event) => this.handleGrainAmountChange(event, index)}
                 />
-                <button
+                <Button
                     type="button"
                     disabled={this.props.disableDelete}
                     onClick={() => this.props.handleDeleteGrain(grain)}
                 >
                     DeleteGrain
-                </button>
+                </Button>
             </div>
         )
     };
@@ -63,7 +64,7 @@ export default class RecipeGrains extends React.Component {
                 {grains.map((grain, i) => (
                     this.buildGrainComponent(grain, i)
                 ))}
-                <button type="button" onClick={this.props.handleAddGrain}>Add Grain</button>
+                <Button type="button" onClick={this.props.handleAddGrain}>Add Grain</Button>
             </div>
         )
     }

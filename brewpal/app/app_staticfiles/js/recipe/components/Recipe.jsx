@@ -8,6 +8,8 @@ import TextArea from '../../shared/components/TextArea'
 import RecipeYeastContainer from "../containers/RecipeYeastContainer";
 import RecipeGrainsContainer from "../containers/RecipeGrainsContainer";
 import RecipeHopsContainer from "../containers/RecipeHopsContainer";
+import RecipeNameStyles from '../../../css/recipe/recipeName.css'
+import { Button } from "react-bootstrap";
 
 export default class Recipe extends React.Component {
     saveRecipe = (event) => {
@@ -37,7 +39,7 @@ export default class Recipe extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <h1>Recipe</h1>
                 <form onSubmit={this.saveRecipe}>
                     <TextInput
@@ -77,7 +79,7 @@ export default class Recipe extends React.Component {
                     <br/>
                     <br/>
                     <RecipeHopsContainer />
-                    <button type="submit">Save Recipe</button>
+                    <Button type="submit">Save Recipe</Button>
                 </form>
             </div>
         )

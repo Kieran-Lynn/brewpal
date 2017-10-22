@@ -1,6 +1,7 @@
-var path = require("path")
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
+const path = require("path");
+const webpack = require('webpack');
+const BundleTracker = require('webpack-bundle-tracker');
+const combineLoaders = require('webpack-combine-loaders');
 
 
 module.exports = {
@@ -37,7 +38,20 @@ module.exports = {
                 exclude: /node_modules/,
                 loaders: ['babel-loader']
             },
-        ],
+            {
+                test: /\.css$/,
+                loader: combineLoaders([
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        query: {
+                            modules: true,
+                        }
+                    }
+                ])
+            }],
 
     },
 
@@ -45,4 +59,4 @@ module.exports = {
         modules: ['node_modules'],
         extensions: ['.js', '.jsx']
     },
-}
+};
