@@ -21,7 +21,8 @@ export default class Select extends React.Component {
         return (
             <FormGroup className="col-md-3">
                 <ControlLabel>{this.props.label}</ControlLabel>
-                <FormControl componentClass="select" placeholder="select">
+                <FormControl
+                    componentClass="select"
                     name={this.props.name}
                     value={this.props.value}
                     onChange={(event) => this.props.onChange(event, this.props.index)}
@@ -40,4 +41,4 @@ Select.PropTypes = {
     value: PropTypes.string.required,
     options: PropTypes.array.required,
     onChange: PropTypes.func.required
-}
+};

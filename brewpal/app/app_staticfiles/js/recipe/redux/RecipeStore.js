@@ -1,4 +1,4 @@
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 import RecipeReducer from './modules/RecipeReducer'
 
 const initialState = {
@@ -15,6 +15,6 @@ const configureStore = () => createStore(
     RecipeReducer,
     initialState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+);
 
 export default configureStore;

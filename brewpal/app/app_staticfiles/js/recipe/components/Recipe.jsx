@@ -1,15 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 import serializeForm from 'form-serialize'
 import axios from 'axios'
 import cookies from 'browser-cookies'
-import TextInput from '../../shared/components/TextInput'
-import TextArea from '../../shared/components/TextArea'
 import RecipeYeastContainer from "../containers/RecipeYeastContainer";
 import RecipeGrainsContainer from "../containers/RecipeGrainsContainer";
 import RecipeHopsContainer from "../containers/RecipeHopsContainer";
-import RecipeNameStyles from '../../../css/recipe/recipeName.css'
 import { Button } from "react-bootstrap";
+import RecipeNameContainer from "../containers/RecipeNameContainer";
+import RecipeStyleContainer from "../containers/RecipeStyleContainer";
+import RecipeDescriptionContainer from "../containers/RecipeDescriptionContainer";
+import RecipeBatchSizeContainer from "../containers/RecipeBatchSizeContainer";
 
 export default class Recipe extends React.Component {
     saveRecipe = (event) => {
@@ -34,7 +34,6 @@ export default class Recipe extends React.Component {
         }).catch(error => {
 
         });
-
     };
 
     render() {
@@ -42,42 +41,12 @@ export default class Recipe extends React.Component {
             <div className="container-fluid">
                 <h1>Recipe</h1>
                 <form onSubmit={this.saveRecipe}>
-                    <TextInput
-                        label="Recipe Name :"
-                        name="name"
-                        value={this.props.recipeName}
-                        onChange={event => this.props.handleRecipeNameChange(event.target.value)}
-                    />
-                    <TextInput
-                        label="Style :"
-                        name="style"
-                        value={this.props.style}
-                        onChange={event => this.props.handleStyleChange(event.target.value)}
-                    />
-                    <TextInput
-                        label="Batch Size (gal):"
-                        name="batch_size"
-                        value={this.props.batchSize}
-                        onChange={event => this.props.handleBatchSizeChange(event.target.value)}
-                    />
-                    <TextArea
-                        label="Description :"
-                        name="description"
-                        value={this.props.description}
-                        onChange={event => this.props.handleDescriptionChange(event.target.value)}
-                    />
-                    <br/>
+                    <RecipeNameContainer />
+                    <RecipeStyleContainer />
+                    <RecipeBatchSizeContainer />
+                    <RecipeDescriptionContainer />
                     <RecipeYeastContainer/>
-                    <br/>
-                    <br/>
-                    <br/>
                     <RecipeGrainsContainer />
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
                     <RecipeHopsContainer />
                     <Button type="submit">Save Recipe</Button>
                 </form>
@@ -85,14 +54,3 @@ export default class Recipe extends React.Component {
         )
     }
 }
-
-Recipe.PropTypes = {
-    batchSize: PropTypes.string.required,
-    handleBatchSizeChange: PropTypes.func.required,
-    description: PropTypes.string.required,
-    handleDescriptionChange: PropTypes.func.required,
-    recipeName: PropTypes.string.required,
-    handleRecipeNameChange: PropTypes.func.required,
-    style: PropTypes.string.required,
-    handleStyleChange: PropTypes.func.required
-};

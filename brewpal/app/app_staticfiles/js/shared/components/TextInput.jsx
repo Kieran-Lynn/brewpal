@@ -28,4 +28,4 @@ TextInput.PropTypes = {
     value: PropTypes.string.required,
     onChange: PropTypes.func,
     styles: PropTypes.object
-}
+};

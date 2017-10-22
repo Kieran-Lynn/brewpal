@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import TextInput from "../../shared/components/TextInput";
-import {filterNonNumber, getGrainOptions} from "../../shared/utils";
+import { filterNonNumber, getGrainOptions } from "../../shared/utils";
 import Select from "../../shared/components/Select";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default class RecipeGrains extends React.Component {
 

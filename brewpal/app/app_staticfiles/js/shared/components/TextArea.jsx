@@ -27,4 +27,4 @@ TextArea.PropTypes = {
     name: PropTypes.string.required,
     value: PropTypes.string.required,
     onChange: PropTypes.func
-}
+};

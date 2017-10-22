@@ -1,8 +1,8 @@
 import React from 'react'
 import TextInput from "../../shared/components/TextInput";
-import {filterNonNumber} from "../../shared/utils";
+import { filterNonNumber } from "../../shared/utils";
 import PropTypes from 'prop-types';
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default class RecipeHops extends React.Component {
     updateHopState = (updatedHop, index) => {

@@ -1,4 +1,4 @@
-import {filterNonNumber} from "../../../shared/utils";
+import { filterNonNumber } from "../../../shared/utils";
 
 const action_types =
     {
