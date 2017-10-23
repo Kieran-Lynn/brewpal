@@ -89,6 +89,7 @@ export default class RecipeHops extends React.Component {
         const hops = this.props.hops;
         return (
             <div>
+                <h3>Hops</h3>
                 {hops.map((hop, index) => (
                     this.buildHopComponent(hop, index)
                     ))}

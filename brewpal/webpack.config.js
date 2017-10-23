@@ -7,7 +7,7 @@ const combineLoaders = require('webpack-combine-loaders');
 module.exports = {
     context: __dirname,
 
-    entry:{
+    entry: {
         recipe: [
             'react-hot-loader/patch',
             'webpack-dev-server/client?http://localhost:3000',

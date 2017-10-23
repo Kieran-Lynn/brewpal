@@ -61,6 +61,7 @@ export default class RecipeGrains extends React.Component {
         const grains = this.props.grains;
         return (
             <div>
+                <h3>Grains</h3>
                 {grains.map((grain, i) => (
                     this.buildGrainComponent(grain, i)
                 ))}

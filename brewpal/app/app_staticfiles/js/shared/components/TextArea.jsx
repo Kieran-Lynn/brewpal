@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
     ControlLabel,
@@ -10,13 +10,13 @@ export default class TextArea extends React.Component {
     render() {
         return (
             <FormGroup className="col-md-3">
-                <ControlLabel> {this.props.label} </ControlLabel>
-                    <FormControl
-                        componentClass="textarea"
-                        name={this.props.name}
-                        value={this.props.value}
-                        onChange={this.props.onChange}
-                    />
+                <ControlLabel>{this.props.label}</ControlLabel>
+                <FormControl
+                    componentClass="textarea"
+                    name={this.props.name}
+                    value={this.props.value}
+                    onChange={this.props.onChange}
+                />
             </FormGroup>
         )
     }
