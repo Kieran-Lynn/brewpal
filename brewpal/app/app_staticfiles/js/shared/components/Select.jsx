@@ -26,7 +26,7 @@ export default class Select extends React.Component {
                     name={this.props.name}
                     value={this.props.value}
                     onChange={(event) => this.props.onChange(event, this.props.index)}
-                    >
+                >
                     {this.getOptionElements()}
                 </FormControl>
             </FormGroup>

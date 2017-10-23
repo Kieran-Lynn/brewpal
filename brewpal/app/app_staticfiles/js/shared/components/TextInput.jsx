@@ -10,7 +10,7 @@ export default class TextInput extends React.Component {
     render() {
         return (
             <FormGroup className="col-md-3">
-                <ControlLabel> {this.props.label} </ControlLabel>
+                <ControlLabel>{this.props.label}</ControlLabel>
                     <FormControl
                         type="text"
                         name={this.props.name}
@@ -26,6 +26,5 @@ TextInput.PropTypes = {
     label: PropTypes.string,
     name: PropTypes.string.required,
     value: PropTypes.string.required,
-    onChange: PropTypes.func,
-    styles: PropTypes.object
+    onChange: PropTypes.func
 };
