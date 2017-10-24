@@ -83,5 +83,6 @@ describe('<Select/>', () => {
         const formControl = wrapper.find('FormControl');
 
         expect(formControl.children()).to.have.length(props.options.length)
+        expect(formControl.text()).to.be.equal(props.options[0].option)
     });
 });
