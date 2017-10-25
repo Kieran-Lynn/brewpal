@@ -7,7 +7,6 @@ import {
 } from "react-bootstrap";
 
 export default class Select extends React.Component {
-
     getOptionElements = () => {
         let options = [];
         for (let option of this.props.options) {

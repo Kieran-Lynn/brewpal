@@ -2,7 +2,7 @@ import 'jsdom-global/register'
 import React from 'react';
 import { configure, shallow, mount } from 'enzyme';
 import chai, { expect } from 'chai';
-import Select from '../../js/shared/components/Select';
+import Select from '../../../js/shared/components/Select';
 import Adapter from 'enzyme-adapter-react-15';
 import * as sinon from "sinon";
 import sinonChai from 'sinon-chai';

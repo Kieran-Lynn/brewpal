@@ -2,7 +2,7 @@ import 'jsdom-global/register'
 import React from 'react';
 import { configure, shallow, mount } from 'enzyme';
 import { expect } from 'chai';
-import TextInput from '../../js/shared/components/TextInput';
+import TextInput from '../../../js/shared/components/TextInput';
 import Adapter from 'enzyme-adapter-react-15';
 
 configure({adapter: new Adapter()});
