@@ -1,6 +1,6 @@
 import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
+import { configure, shallow, render } from 'enzyme';
 import { expect } from 'chai';
 import TextInput from '../../../js/shared/components/TextInput';
 import Adapter from 'enzyme-adapter-react-15';
@@ -28,26 +28,25 @@ describe('<TextInput/>', () => {
 
     it('should pass props to FormControl', () => {
         const props = {
-            'name': 'name',
-            'value': "value",
-            'onChange': () => {}
+            name: 'name',
+            value: "value",
+            onChange: () => {}
         };
-        const wrapper = mount(<TextInput {...props}/>);
-        const formControlProps = wrapper.find('FormControl').props();
+        const wrapper = shallow(<TextInput {...props}/>);
+        const formControl = wrapper.find('FormControl');
 
-        expect(formControlProps.type).to.equal('text');
-        expect(formControlProps.name).to.equal(props.name);
-        expect(formControlProps.value).to.equal(props.value);
-        expect(formControlProps.onChange).to.equal(props.onChange);
+        expect(formControl.prop('type')).to.equal('text');
+        expect(formControl.prop('name')).to.equal(props.name);
+        expect(formControl.prop('value')).to.equal(props.value);
+        expect(formControl.prop('onChange')).to.equal(props.onChange);
     });
 
     it('should set the label inside ControlLabel', () => {
         const props = {
-            'label': 'label'
+            label: 'label'
         };
-        const wrapper = mount(<TextInput {...props}/>);
-        const controlLabel = wrapper.find('ControlLabel');
+        const wrapper = render(<TextInput {...props}/>);
 
-        expect(controlLabel.text()).to.equal(props.label);
+        expect(wrapper.text()).to.equal(props.label);
     });
 });
