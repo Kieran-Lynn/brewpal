@@ -52,11 +52,11 @@ describe('<Select/>', () => {
     });
 
     it('should set onChange on FormControl', () => {
-        const onChangeStub = sinon.stub();
+        const onChangeSpy = sinon.spy();
         let props = {
             options: [],
             index: '1',
-            onChange: onChangeStub
+            onChange: onChangeSpy
         };
         const expectedOnChange = (event) => this.props.onChange(event, this.props.index);
         const wrapper = shallow(<Select {...props}/>);
@@ -64,7 +64,7 @@ describe('<Select/>', () => {
 
         formControl.simulate('change');
 
-        onChangeStub.should.have.been.calledOnce;
+        onChangeSpy.calledOnce;
     });
 
     it('should set the label inside ControlLabel', () => {
