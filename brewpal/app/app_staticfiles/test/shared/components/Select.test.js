@@ -1,13 +1,10 @@
 import 'jsdom-global/register'
 import React from 'react';
 import { configure, shallow, render } from 'enzyme';
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 import Select from '../../../js/shared/components/Select';
 import Adapter from 'enzyme-adapter-react-15';
 import * as sinon from "sinon";
-import sinonChai from 'sinon-chai';
-chai.should();
-chai.use(sinonChai)
 configure({adapter: new Adapter()});
 
 const props = {
