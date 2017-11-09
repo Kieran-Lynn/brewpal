@@ -24,7 +24,7 @@ export default class RecipeYeast extends React.Component {
         return (
             <div className="row">
                 <TextInput
-                    label="Yeast :"
+                    label="Yeast"
                     name="yeast"
                     value={yeast.yeastType}
                     onChange={this.handleYeastTypeChange}
