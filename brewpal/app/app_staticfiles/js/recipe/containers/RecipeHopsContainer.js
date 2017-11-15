@@ -4,8 +4,8 @@ import RecipeHops from '../components/RecipeHops'
 
 const mapStateToProps = (state) => {
     return {
-        disableDelete: Object.keys(state.hops).length < 2,
-        hops: state.hops
+        disableDelete: Object.keys(state.HopsReducer.hops).length < 2,
+        hops: state.HopsReducer.hops
     }
 };
 

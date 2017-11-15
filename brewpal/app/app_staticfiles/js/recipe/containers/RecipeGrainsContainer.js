@@ -4,8 +4,8 @@ import RecipeGrains from '../components/RecipeGrains'
 
 const mapStateToProps = (state) => {
     return {
-        disableDelete: Object.keys(state.grains).length < 2,
-        grains: state.grains
+        disableDelete: Object.keys(state.GrainsReducer.grains).length < 2,
+        grains: state.GrainsReducer.grains
     }
 };
 

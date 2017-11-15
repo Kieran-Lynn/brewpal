@@ -4,7 +4,7 @@ import RecipeYeast from '../components/RecipeYeast'
 
 const mapStateToProps = (state) => {
     return {
-        yeast: state.yeast
+        yeast: state.RecipeReducer.yeast
     }
 };
 

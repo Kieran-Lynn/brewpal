@@ -4,7 +4,7 @@ import RecipeStyle from '../components/RecipeStyle'
 
 const mapStateToProps = (state) => {
     return {
-        style: state.style
+        style: state.RecipeReducer.style
     }
 };
 

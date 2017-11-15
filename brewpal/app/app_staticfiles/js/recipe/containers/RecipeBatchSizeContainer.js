@@ -4,7 +4,7 @@ import RecipeBatchSize from '../components/RecipeBatchSize'
 
 const mapStateToProps = (state) => {
     return {
-        batchSize: state.batchSize
+        batchSize: state.RecipeReducer.batchSize
     }
 };
 

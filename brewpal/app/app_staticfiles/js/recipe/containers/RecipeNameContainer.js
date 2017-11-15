@@ -4,7 +4,7 @@ import RecipeName from '../components/RecipeName'
 
 const mapStateToProps = (state) => {
     return {
-        recipeName: state.recipeName
+        recipeName: state.RecipeReducer.recipeName
     }
 };
 

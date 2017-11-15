@@ -4,7 +4,7 @@ import RecipeDescription from '../components/RecipeDescription'
 
 const mapStateToProps = (state) => {
     return {
-        description: state.description
+        description: state.RecipeReducer.description
     }
 };
 
