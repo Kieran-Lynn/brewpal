@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { actions } from '../redux/modules/RecipeReducer'
+import { actions } from '../redux/modules/HopsReducer'
 import RecipeHops from '../components/RecipeHops'
 
 const mapStateToProps = (state) => {
