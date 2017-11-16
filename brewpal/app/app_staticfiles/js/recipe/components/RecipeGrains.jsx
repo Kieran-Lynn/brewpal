@@ -2,17 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import RecipeGrainRow from './RecipeGrainRow'
 import { Button } from "react-bootstrap";
-import {
-    filterNonNumber,
-    getGrainOptions
-} from "../../shared/utils";
-
 
 export default class RecipeGrains extends React.Component {
-    updateGrainStore = (updatedGrain, index) => {
-        this.props.handleGrainChange(updatedGrain, index)
-    };
-
     render() {
         const grains = this.props.grains;
         return (
@@ -23,12 +14,16 @@ export default class RecipeGrains extends React.Component {
                         key={i}
                         grain={grain}
                         index={i}
-                        updateGrainStore={this.updateGrainStore}
+                        handleGrainChange={this.props.handleGrainChange}
                         handleDeleteGrain={this.props.handleDeleteGrain}
                         disableDelete={this.props.disableDelete}
                     />
                 ))}
-                <Button type="button" onClick={this.props.handleAddGrain}>Add Grain</Button>
+                <Button 
+                    type="button"
+                    onClick={this.props.handleAddGrain}>
+                    Add Grain
+                </Button>
             </div>
         )
     }

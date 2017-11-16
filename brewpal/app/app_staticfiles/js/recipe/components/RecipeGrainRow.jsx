@@ -12,14 +12,13 @@ export default class RecipeGrainRow extends React.Component {
     handleGrainTypeChange = (event, index) => {
         const updatedGrain = this.props.grain;
         updatedGrain.grainType = event.target.value;
-
-        this.props.updateGrainStore(updatedGrain, index);
+        this.props.handleGrainChange(updatedGrain, index);
     };
 
     handleGrainAmountChange = (event, index) => {
         const updatedGrain = this.props.grain;;
         updatedGrain.amount = filterNonNumber(event.target.value);
-        this.props.updateGrainStore(updatedGrain, index);
+        this.props.handleGrainChange(updatedGrain, index);
     };
 
     buildGrainOptions = () => {
@@ -59,8 +58,9 @@ export default class RecipeGrainRow extends React.Component {
 }
 
 RecipeGrainRow.proptypes = {
+    index: PropTypes.number.required,
     grain: PropTypes.object.required,
     handleDeleteGrain: PropTypes.func.required,
-    updateGrainStore: PropTypes.func.required,
+    handleGrainChange: PropTypes.func.required,
     disableDelete: PropTypes.bool.required
 };
