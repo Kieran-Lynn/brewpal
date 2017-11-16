@@ -1,6 +1,6 @@
 import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
 import RecipeYeast from '../../../js/recipe/components/RecipeYeast';
