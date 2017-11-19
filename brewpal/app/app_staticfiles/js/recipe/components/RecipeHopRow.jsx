@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import TextInput from "../../shared/components/TextInput";
-import { Button } from "react-bootstrap";
-import { filterNonNumber } from "../../shared/utils";
+import TextInput from '../../shared/components/TextInput';
+import Select from '../../shared/components/Select'
+import { Button } from 'react-bootstrap';
+import { filterNonNumber } from '../../shared/utils';
 
 export default class RecipeHopRow extends React.Component {
     handleHopTypeChange = (event, index) => {
@@ -35,6 +36,15 @@ export default class RecipeHopRow extends React.Component {
         this.props.handleHopChange(updatedHop, index);
     };
 
+    buildHopUseOptions = () => {
+        return [
+            { value:"boil", option :"Boil" },
+            { value:"dryHop", option :"Dry Hop" },
+            { value:"whirlpool", option :"Whirlpool" },
+            { value:"hopback", option :"Hopack" }
+        ]
+    }
+
     render() {
         const index = this.props.index;
         const hop = this.props.hop;
@@ -64,16 +74,14 @@ export default class RecipeHopRow extends React.Component {
                         value={hop.time}
                         onChange={(event) => this.handleTimeChange(event, index)}
                     />
-                    <select
+                    <Select
+                        index={index}
                         name="hopUse"
+                        label="Use"
                         value={hop.hopUse}
+                        options={this.buildHopUseOptions()}
                         onChange={(event) => this.handleHopUseChange(event, index)}
-                    >
-                        <option value="boil">Boil</option>
-                        <option value="dryHop">Dry Hop</option>
-                        <option value="whirlpool">Whirlpool</option>
-                        <option value="hopback">Hopback</option>
-                    </select>
+                    />
                     <Button
                         type="button"
                         disabled={this.props.disableDelete}
