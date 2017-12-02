@@ -1,17 +1,25 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import RecipeGrainRow from './RecipeGrainRow'
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import RecipeGrainRow from './RecipeGrainRow';
 
 export default class RecipeGrains extends React.Component {
+    static propTypes = {
+        grains: PropTypes.array.isRequired,
+        handleDeleteGrain: PropTypes.func.isRequired,
+        handleGrainChange: PropTypes.func.isRequired,
+        handleAddGrain: PropTypes.func.isRequired,
+        disableDelete: PropTypes.bool.isRequired,
+    }
+
     render() {
-        const grains = this.props.grains;
+        const { grains } = this.props;
         return (
             <div>
                 <h3>Grains</h3>
                 {grains.map((grain, i) => (
                     <RecipeGrainRow
-                        key={i}
+                        key={grain.grainType}
                         grain={grain}
                         index={i}
                         handleGrainChange={this.props.handleGrainChange}
@@ -19,20 +27,13 @@ export default class RecipeGrains extends React.Component {
                         disableDelete={this.props.disableDelete}
                     />
                 ))}
-                <Button 
+                <Button
                     type="button"
-                    onClick={this.props.handleAddGrain}>
+                    onClick={this.props.handleAddGrain}
+                >
                     Add Grain
                 </Button>
             </div>
-        )
+        );
     }
 }
-
-RecipeGrains.proptypes = {
-    grains: PropTypes.array.required,
-    handleDeleteGrain: PropTypes.func.required,
-    handleGrainChange: PropTypes.func.required,
-    handleAddGrain: PropTypes.func.required,
-    disableDelete: PropTypes.bool.required
-};

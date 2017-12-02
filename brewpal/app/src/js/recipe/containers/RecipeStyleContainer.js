@@ -1,24 +1,20 @@
-import { connect } from 'react-redux'
-import { actions } from '../redux/modules/RecipeReducer'
-import RecipeStyle from '../components/RecipeStyle'
+import { connect } from 'react-redux';
+import { actions } from '../redux/modules/RecipeReducer';
+import RecipeStyle from '../components/RecipeStyle';
 
-const mapStateToProps = (state) => {
-    return {
-        style: state.RecipeReducer.style
-    }
-};
+const mapStateToProps = state => ({
+    style: state.RecipeReducer.style,
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleStyleChange: (style) => {
-            dispatch(actions.updateStyle(style))
-        },
-    }
-};
+const mapDispatchToProps = dispatch => ({
+    handleStyleChange: (style) => {
+        dispatch(actions.updateStyle(style));
+    },
+});
 
 const RecipeStyleContainer = connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(RecipeStyle);
 
-export default RecipeStyleContainer
+export default RecipeStyleContainer;

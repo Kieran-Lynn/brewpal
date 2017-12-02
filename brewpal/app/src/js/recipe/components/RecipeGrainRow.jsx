@@ -1,14 +1,22 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from "../../shared/components/TextInput";
-import Select from "../../shared/components/Select";
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
+import TextInput from '../../shared/components/TextInput';
+import Select from '../../shared/components/Select';
 import {
     getGrainOptions,
-    filterNonNumber
-} from "../../shared/utils";
+    filterNonNumber,
+} from '../../shared/utils';
 
 export default class RecipeGrainRow extends React.Component {
+    static propTypes = {
+        index: PropTypes.number.isRequired,
+        grain: PropTypes.object.isRequired,
+        handleDeleteGrain: PropTypes.func.isRequired,
+        handleGrainChange: PropTypes.func.isRequired,
+        disableDelete: PropTypes.bool.isRequired,
+    }
+
     handleGrainTypeChange = (event, index) => {
         const updatedGrain = this.props.grain;
         updatedGrain.grainType = event.target.value;
@@ -16,20 +24,22 @@ export default class RecipeGrainRow extends React.Component {
     };
 
     handleGrainAmountChange = (event, index) => {
-        const updatedGrain = this.props.grain;;
+        const updatedGrain = this.props.grain;
         updatedGrain.amount = filterNonNumber(event.target.value);
         this.props.handleGrainChange(updatedGrain, index);
     };
 
-    buildGrainOptions = () => {
-        //TODO: filter out already selected grains
-        return getGrainOptions();
-    };
+    buildGrainOptions = () =>
+        // TODO: filter out already selected grains
+        getGrainOptions()
+    ;
 
     render() {
-        const index = this.props.index;
-        const grain = this.props.grain;
-        return(
+        const {
+            index,
+            grain,
+        } = this.props;
+        return (
             <div className="row">
                 <Select
                     index={index}
@@ -37,13 +47,13 @@ export default class RecipeGrainRow extends React.Component {
                     name="grainType"
                     value={grain.grainType}
                     options={this.buildGrainOptions()}
-                    onChange={(event) => this.handleGrainTypeChange(event, index)}
+                    onChange={event => this.handleGrainTypeChange(event, index)}
                 />
                 <TextInput
                     label="Amount (lbs)"
                     name="grainAmount"
                     value={grain.amount}
-                    onChange={(event) => this.handleGrainAmountChange(event, index)}
+                    onChange={event => this.handleGrainAmountChange(event, index)}
                 />
                 <Button
                     type="button"
@@ -53,14 +63,7 @@ export default class RecipeGrainRow extends React.Component {
                     DeleteGrain
                 </Button>
             </div>
-        )
+        );
     }
 }
 
-RecipeGrainRow.proptypes = {
-    index: PropTypes.number.required,
-    grain: PropTypes.object.required,
-    handleDeleteGrain: PropTypes.func.required,
-    handleGrainChange: PropTypes.func.required,
-    disableDelete: PropTypes.bool.required
-};

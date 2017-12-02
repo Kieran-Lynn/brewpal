@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import TextArea from "../../shared/components/TextArea";
+import TextArea from '../../shared/components/TextArea';
 
 export default class RecipeDescription extends React.Component {
+    static propTypes = {
+        description: PropTypes.string,
+        handleDescriptionChange: PropTypes.func.isRequired,
+    }
+    static defaultProps = {
+        description: '',
+    }
+
     render() {
         return (
             <div className="row">
@@ -13,11 +21,7 @@ export default class RecipeDescription extends React.Component {
                     onChange={event => this.props.handleDescriptionChange(event.target.value)}
                 />
             </div>
-        )
+        );
     }
 }
 
-RecipeDescription.PropTypes = {
-    description: PropTypes.string,
-    handleDescriptionChange: PropTypes.func.isRequired
-};

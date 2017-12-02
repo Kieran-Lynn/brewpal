@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from '../../shared/components/TextInput';
-import Select from '../../shared/components/Select'
 import { Button } from 'react-bootstrap';
+import TextInput from '../../shared/components/TextInput';
+import Select from '../../shared/components/Select';
 import { filterNonNumber } from '../../shared/utils';
 
 export default class RecipeHopRow extends React.Component {
+    static propTypes = {
+        index: PropTypes.number.isRequired,
+        hop: PropTypes.object.isRequired,
+        disableDelete: PropTypes.bool.isRequired,
+        handleDeleteHop: PropTypes.func.isRequired,
+        handleHopChange: PropTypes.func.isRequired,
+    }
     handleHopTypeChange = (event, index) => {
         const updatedHop = this.props.hop;
         updatedHop.hopType = event.target.value;
@@ -36,43 +43,43 @@ export default class RecipeHopRow extends React.Component {
         this.props.handleHopChange(updatedHop, index);
     };
 
-    buildHopUseOptions = () => {
-        return [
-            { value:"boil", option :"Boil" },
-            { value:"dryHop", option :"Dry Hop" },
-            { value:"whirlpool", option :"Whirlpool" },
-            { value:"hopback", option :"Hopack" }
-        ]
-    }
+    buildHopUseOptions = () => [
+        { value: 'boil', option: 'Boil' },
+        { value: 'dryHop', option: 'Dry Hop' },
+        { value: 'whirlpool', option: 'Whirlpool' },
+        { value: 'hopback', option: 'Hopack' },
+    ]
 
     render() {
-        const index = this.props.index;
-        const hop = this.props.hop;
+        const {
+            index,
+            hop,
+        } = this.props;
         return (
             <div className="row">
                 <TextInput
                     label="Hop"
                     name="hop_type"
                     value={hop.hopType}
-                    onChange={(event) => this.handleHopTypeChange(event, index)}
+                    onChange={event => this.handleHopTypeChange(event, index)}
                 />
                 <TextInput
                     label="Amount (oz)"
                     name="hop_amount"
                     value={hop.amount}
-                    onChange={(event) => this.handleHopAmountChange(event, index)}
+                    onChange={event => this.handleHopAmountChange(event, index)}
                 />
                 <TextInput
                     label="Alpha Acid"
                     name="alpha_acid"
                     value={hop.alphaAcid}
-                    onChange={(event) => this.handleAlphaAcidChange(event, index)}
+                    onChange={event => this.handleAlphaAcidChange(event, index)}
                 />
                 <TextInput
-                    label={hop.hopUse === "boil" ? "Time (min)" : "Time (days)"}
+                    label={hop.hopUse === 'boil' ? 'Time (min)' : 'Time (days)'}
                     name="time"
                     value={hop.time}
-                    onChange={(event) => this.handleTimeChange(event, index)}
+                    onChange={event => this.handleTimeChange(event, index)}
                 />
                 <Select
                     index={index}
@@ -80,22 +87,15 @@ export default class RecipeHopRow extends React.Component {
                     label="Use"
                     value={hop.hopUse}
                     options={this.buildHopUseOptions()}
-                    onChange={(event) => this.handleHopUseChange(event, index)}
+                    onChange={event => this.handleHopUseChange(event, index)}
                 />
                 <Button
                     type="button"
                     disabled={this.props.disableDelete}
-                    onClick={() => this.props.handleDeleteHop(hop)}>Delete Hop
+                    onClick={() => this.props.handleDeleteHop(hop)}
+                >Delete Hop
                 </Button>
             </div>
-        )
+        );
     }
-}
-
-RecipeHopRow.PropTypes = {
-    index: PropTypes.number.required,
-    hop: PropTypes.object.required,
-    disableDelete: PropTypes.bool.required,
-    handleDeleteHop: PropTypes.func.required,
-    handleHopChange: PropTypes.func.required,
 }

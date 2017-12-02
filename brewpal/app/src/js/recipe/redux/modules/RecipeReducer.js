@@ -1,79 +1,67 @@
-import { filterNonNumber } from "../../../shared/utils";
+import { filterNonNumber } from '../../../shared/utils';
 
-const action_types = {
+const actionTypes = {
     UPDATE_BATCH_SIZE: 'UPDATE_BATCH_SIZE',
     UPDATE_DESCRIPTION: 'UPDATE_DESCRIPTION',
     UPDATE_RECIPE_NAME: 'UPDATE_RECIPE_NAME',
     UPDATE_STYLE: 'UPDATE_STYLE',
-    UPDATE_YEAST: 'UPDATE_YEAST'
+    UPDATE_YEAST: 'UPDATE_YEAST',
 };
 
-const updateObject = (oldObject, newValues) => {
-    return Object.assign({}, oldObject, newValues);
-};
+const updateObject = (oldObject, newValues) => Object.assign({}, oldObject, newValues);
 
 const RecipeReducer = (state = {}, action) => {
     switch (action.type) {
-        case action_types.UPDATE_BATCH_SIZE:
-            return updateObject(state, {
-                batchSize: filterNonNumber(action.batchSize)
-            });
+    case actionTypes.UPDATE_BATCH_SIZE:
+        return updateObject(state, {
+            batchSize: filterNonNumber(action.batchSize),
+        });
 
-        case action_types.UPDATE_DESCRIPTION:
-            return updateObject(state, {
-                description: action.description
-            });
+    case actionTypes.UPDATE_DESCRIPTION:
+        return updateObject(state, {
+            description: action.description,
+        });
 
-        case action_types.UPDATE_RECIPE_NAME:
-            return updateObject(state, {
-                recipeName: action.name
-            });
+    case actionTypes.UPDATE_RECIPE_NAME:
+        return updateObject(state, {
+            recipeName: action.name,
+        });
 
-        case action_types.UPDATE_STYLE:
-            return updateObject(state, {
-                style: action.style
-            });
+    case actionTypes.UPDATE_STYLE:
+        return updateObject(state, {
+            style: action.style,
+        });
 
-        case action_types.UPDATE_YEAST:
-            return updateObject(state, {
-                yeast: action.yeast
-            });
+    case actionTypes.UPDATE_YEAST:
+        return updateObject(state, {
+            yeast: action.yeast,
+        });
 
-        default:
-            return state
+    default:
+        return state;
     }
 };
-export default RecipeReducer
+export default RecipeReducer;
 
 export const actions = {
-    updateRecipeName: (name) => {
-        return {
-            type: action_types.UPDATE_RECIPE_NAME,
-            name
-        }
-    },
-    updateStyle: (style) => {
-        return {
-            type: action_types.UPDATE_STYLE,
-            style
-        }
-    },
-    updateBatchSize: (batchSize) => {
-        return {
-            type: action_types.UPDATE_BATCH_SIZE,
-            batchSize
-        }
-    },
-    updateDescription: (description) => {
-        return {
-            type: action_types.UPDATE_DESCRIPTION,
-            description
-        }
-    },
-    updateYeast: (yeast) => {
-        return {
-            type: action_types.UPDATE_YEAST,
-            yeast
-        }
-    }
+    updateRecipeName: name => ({
+        type: actionTypes.UPDATE_RECIPE_NAME,
+        name,
+    }),
+    updateStyle: style => ({
+        type: actionTypes.UPDATE_STYLE,
+        style,
+    }),
+    updateBatchSize: batchSize => ({
+        type: actionTypes.UPDATE_BATCH_SIZE,
+        batchSize,
+    }),
+    updateDescription: description => ({
+        type: actionTypes.UPDATE_DESCRIPTION,
+        description,
+    }),
+    updateYeast: yeast => ({
+        type: actionTypes.UPDATE_YEAST,
+        yeast,
+    }),
 };

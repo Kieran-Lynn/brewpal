@@ -1,17 +1,26 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
     ControlLabel,
     FormControl,
-    FormGroup
-} from "react-bootstrap";
+    FormGroup,
+} from 'react-bootstrap';
 
 export default class Select extends React.Component {
+    static propTypes = {
+        label: PropTypes.string.isRequired,
+        index: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+        options: PropTypes.array.isRequired,
+        onChange: PropTypes.func.isRequired,
+    }
+
     getOptionElements = () => {
-        let options = [];
-        for (let option of this.props.options) {
-            options.push(<option key={option.value} value={option.value}>{option.option}</option>)
-        }
+        const options = [];
+        this.props.options.forEach((option) => {
+            options.push(<option key={option.value} value={option.value}>{option.option}</option>);
+        });
 
         return options;
     };
@@ -24,20 +33,11 @@ export default class Select extends React.Component {
                     componentClass="select"
                     name={this.props.name}
                     value={this.props.value}
-                    onChange={(event) => this.props.onChange(event, this.props.index)}
+                    onChange={event => this.props.onChange(event, this.props.index)}
                 >
                     {this.getOptionElements()}
                 </FormControl>
             </FormGroup>
-        )
+        );
     }
 }
-
-Select.PropTypes = {
-    label: PropTypes.string,
-    index: PropTypes.number.required,
-    name: PropTypes.string.required,
-    value: PropTypes.string.required,
-    options: PropTypes.array.required,
-    onChange: PropTypes.func.required
-};

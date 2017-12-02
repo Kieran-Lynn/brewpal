@@ -1,0 +1,12 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": ["react", "jsx-a11y", "import"],
+  "rules": {
+    "indent": [2, 4],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/prefer-stateless-function": 0,
+    "react/forbid-prop-types": 0
+  }
+}
