@@ -51,42 +51,42 @@ export default class RecipeHopRow extends React.Component {
         return (
             <div className="row">
                 <TextInput
-                        label="Hop: "
-                        name="hopType"
-                        value={hop.hopType}
-                        onChange={(event) => this.handleHopTypeChange(event, index)}
-                    />
-                    <TextInput
-                        label="Amount (oz)"
-                        name="hopAmount"
-                        value={hop.amount}
-                        onChange={(event) => this.handleHopAmountChange(event, index)}
-                    />
-                    <TextInput
-                        label="Alpha Acid"
-                        name="alphaAcid"
-                        value={hop.alphaAcid}
-                        onChange={(event) => this.handleAlphaAcidChange(event, index)}
-                    />
-                    <TextInput
-                        label={hop.hopUse === "boil" ? "Time (min)" : "Time (days)"}
-                        name="time"
-                        value={hop.time}
-                        onChange={(event) => this.handleTimeChange(event, index)}
-                    />
-                    <Select
-                        index={index}
-                        name="hopUse"
-                        label="Use"
-                        value={hop.hopUse}
-                        options={this.buildHopUseOptions()}
-                        onChange={(event) => this.handleHopUseChange(event, index)}
-                    />
-                    <Button
-                        type="button"
-                        disabled={this.props.disableDelete}
-                        onClick={() => this.props.handleDeleteHop(hop)}>Delete Hop
-                    </Button>
+                    label="Hop"
+                    name="hop_type"
+                    value={hop.hopType}
+                    onChange={(event) => this.handleHopTypeChange(event, index)}
+                />
+                <TextInput
+                    label="Amount (oz)"
+                    name="hop_amount"
+                    value={hop.amount}
+                    onChange={(event) => this.handleHopAmountChange(event, index)}
+                />
+                <TextInput
+                    label="Alpha Acid"
+                    name="alpha_acid"
+                    value={hop.alphaAcid}
+                    onChange={(event) => this.handleAlphaAcidChange(event, index)}
+                />
+                <TextInput
+                    label={hop.hopUse === "boil" ? "Time (min)" : "Time (days)"}
+                    name="time"
+                    value={hop.time}
+                    onChange={(event) => this.handleTimeChange(event, index)}
+                />
+                <Select
+                    index={index}
+                    name="hop_use"
+                    label="Use"
+                    value={hop.hopUse}
+                    options={this.buildHopUseOptions()}
+                    onChange={(event) => this.handleHopUseChange(event, index)}
+                />
+                <Button
+                    type="button"
+                    disabled={this.props.disableDelete}
+                    onClick={() => this.props.handleDeleteHop(hop)}>Delete Hop
+                </Button>
             </div>
         )
     }
