@@ -11,7 +11,7 @@ export default class TextArea extends React.Component {
         label: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        onChange: PropTypes.isRequired,
+        onChange: PropTypes.func.isRequired,
     }
 
     render() {
