@@ -1,28 +1,28 @@
-import 'jsdom-global/register'
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import RecipeGrains from '../../../js/recipe/components/RecipeGrains';
 import Adapter from 'enzyme-adapter-react-15';
-import * as sinon from "sinon";
+import * as sinon from 'sinon';
+import RecipeGrains from '../../../js/recipe/components/RecipeGrains';
+
 chai.use(sinonChai);
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const handleGrainChangeSpy = sinon.spy();
 const handleDeleteGrainSpy = sinon.spy();
 const handleAddGrainSpy = sinon.spy();
-let defaultProps = { }
+let defaultProps = { };
 
 describe('<RecipeGrains />', () => {
-    beforeEach( () => {
+    beforeEach(() => {
         defaultProps = {
-            grains: [{grainType: "1", amount: "10"}],
+            grains: [{ grainType: '1', amount: '10' }],
             disableDelete: true,
             handleGrainChange: handleGrainChangeSpy,
             handleDeleteGrain: handleDeleteGrainSpy,
-            handleAddGrain: handleAddGrainSpy
-        }
+            handleAddGrain: handleAddGrainSpy,
+        };
     });
 
     it('should be a div', () => {
@@ -51,7 +51,7 @@ describe('<RecipeGrains />', () => {
     });
 
     it('should render the 2 RecipeGrainRow components when there are two grains in the array', () => {
-        const newGrain = {grainType: "2", amount: "5"};
+        const newGrain = { grainType: '2', amount: '5' };
         defaultProps.grains.push(newGrain);
         const wrapper = shallow(<RecipeGrains {...defaultProps} />);
 

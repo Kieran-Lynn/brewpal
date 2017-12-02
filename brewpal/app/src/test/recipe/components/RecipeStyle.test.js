@@ -1,12 +1,12 @@
-import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import { expect } from 'chai';
-import RecipeStyle from '../../../js/recipe/components/RecipeStyle';
 import Adapter from 'enzyme-adapter-react-15';
-import * as sinon from "sinon";
+import * as sinon from 'sinon';
+import RecipeStyle from '../../../js/recipe/components/RecipeStyle';
 
-configure({adapter: new Adapter()});
+
+configure({ adapter: new Adapter() });
 
 
 describe('<RecipeStyle />', () => {
@@ -17,16 +17,16 @@ describe('<RecipeStyle />', () => {
     });
 
     it('should have a <TextInput />', () => {
-        const wrapper = shallow(<RecipeStyle/>);
+        const wrapper = shallow(<RecipeStyle />);
 
         expect(wrapper.find('TextInput')).to.have.length(1);
     });
 
     it('should pass props to <TextInput /> ', () => {
         const props = {
-            style: 'style name'
+            style: 'style name',
         };
-        const wrapper = shallow(<RecipeStyle {...props}/>);
+        const wrapper = shallow(<RecipeStyle {...props} />);
         const textInput = wrapper.find('TextInput');
 
         expect(textInput.prop('label')).to.equal('Style');
@@ -36,16 +36,16 @@ describe('<RecipeStyle />', () => {
 
     it('should set handleStyleChange on <TextInput />', () => {
         const onChangeSpy = sinon.spy();
-        const event = {target: {value: 'value'}};
-        let props = {
-            handleStyleChange: onChangeSpy
+        const event = { target: { value: 'value' } };
+        const props = {
+            handleStyleChange: onChangeSpy,
         };
-        const wrapper = shallow(<RecipeStyle {...props}/>);
+        const wrapper = shallow(<RecipeStyle {...props} />);
         const textInput = wrapper.find('TextInput');
 
         textInput.simulate('change', event);
 
         onChangeSpy.calledOnce;
-        expect(onChangeSpy.calledWith(event.target.value)).to.be.true
+        expect(onChangeSpy.calledWith(event.target.value)).to.be.true;
     });
 });

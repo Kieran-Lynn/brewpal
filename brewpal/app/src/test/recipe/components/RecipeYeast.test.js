@@ -1,17 +1,17 @@
-import 'jsdom-global/register'
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import RecipeYeast from '../../../js/recipe/components/RecipeYeast';
 import Adapter from 'enzyme-adapter-react-15';
-import * as sinon from "sinon";
+import * as sinon from 'sinon';
+import RecipeYeast from '../../../js/recipe/components/RecipeYeast';
+
 chai.use(sinonChai);
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const defaultProps = {
-    yeast: {yeastType: "yeastName", fermentationTemp: "65"}
-}
+    yeast: { yeastType: 'yeastName', fermentationTemp: '65' },
+};
 
 describe('<RecipeYeast/>', () => {
     it('should have className equal to row', () => {
@@ -47,12 +47,12 @@ describe('<RecipeYeast/>', () => {
     it('should call handleYeastChange with the updated yeast type when its changed', () => {
         const handleYeastChangeSpy = sinon.spy();
         const newYeastType = 'newYeastType';
-        const event = {target: {value: newYeastType}};
-        const expectedYeast = { yeastType: newYeastType, fermentationTemp: '65' }
+        const event = { target: { value: newYeastType } };
+        const expectedYeast = { yeastType: newYeastType, fermentationTemp: '65' };
         const props = {
             ...defaultProps,
-            handleYeastChange: handleYeastChangeSpy
-        }
+            handleYeastChange: handleYeastChangeSpy,
+        };
         const wrapper = shallow(<RecipeYeast {...props} />);
         const yeastTypeInput = wrapper.find('TextInput').at(0);
 
@@ -65,12 +65,12 @@ describe('<RecipeYeast/>', () => {
     it('should call handleYeastChange with the updated fermentation temp when its changed', () => {
         const handleYeastChangeSpy = sinon.spy();
         const newFermTemp = '70';
-        const event = {target: {value: newFermTemp}};
-        const expectedYeast = { yeastType: 'yeastName', fermentationTemp: newFermTemp }
+        const event = { target: { value: newFermTemp } };
+        const expectedYeast = { yeastType: 'yeastName', fermentationTemp: newFermTemp };
         const props = {
             ...defaultProps,
-            handleYeastChange: handleYeastChangeSpy
-        }
+            handleYeastChange: handleYeastChangeSpy,
+        };
         const wrapper = shallow(<RecipeYeast {...props} />);
         const yeastTypeInput = wrapper.find('TextInput').at(1);
 

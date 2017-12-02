@@ -1,20 +1,21 @@
-import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import RecipeHopRow from '../../../js/recipe/components/RecipeHopRow';
 import Adapter from 'enzyme-adapter-react-15';
 import * as sinon from 'sinon';
+import RecipeHopRow from '../../../js/recipe/components/RecipeHopRow';
+
+
 chai.use(sinonChai);
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const handleHopChangeSpy = sinon.spy();
 const handleDeleteHopSpy = sinon.spy();
-let defaultProps = { }
+let defaultProps = { };
 
 describe('<RecipeHopRow />', () => {
-    beforeEach( () => {
+    beforeEach(() => {
         defaultProps = {
             index: 0,
             hop: {
@@ -22,29 +23,29 @@ describe('<RecipeHopRow />', () => {
                 alphaAcid: '10.0',
                 amount: '2.0',
                 time: '10',
-                hopUse: 'boil'
+                hopUse: 'boil',
             },
             disableDelete: true,
             handleHopChange: handleHopChangeSpy,
-            handleDeleteHop: handleDeleteHopSpy
-        }
+            handleDeleteHop: handleDeleteHopSpy,
+        };
         handleHopChangeSpy.reset();
         handleDeleteHopSpy.reset();
     });
 
-    it("should be a div with the classname row", () => {
+    it('should be a div with the classname row', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        
+
         expect(wrapper.type()).to.equal('div');
         expect(wrapper.prop('className')).to.equal('row');
     });
 
-    it("renders one <Select /> with the correct props", () => {
+    it('renders one <Select /> with the correct props', () => {
         const expectedHopOptions = [
-            { value:"boil", option :"Boil" },
-            { value:"dryHop", option :"Dry Hop" },
-            { value:"whirlpool", option :"Whirlpool" },
-            { value:"hopback", option :"Hopack" }
+            { value: 'boil', option: 'Boil' },
+            { value: 'dryHop', option: 'Dry Hop' },
+            { value: 'whirlpool', option: 'Whirlpool' },
+            { value: 'hopback', option: 'Hopack' },
         ];
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopUseDropdown = wrapper.find('Select');
@@ -57,20 +58,20 @@ describe('<RecipeHopRow />', () => {
         expect(hopUseDropdown.prop('options')).to.deep.equal(expectedHopOptions);
     });
 
-    it("calls handleHopChange with the updated hop use when the Select option is changed", () => {
+    it('calls handleHopChange with the updated hop use when the Select option is changed', () => {
         const hopUse = 'whirlpool';
         const expectedHop = {
             hopType: 'Mosiac',
             alphaAcid: '10.0',
             amount: '2.0',
             time: '10',
-            hopUse: hopUse
+            hopUse,
         };
         const event = {
             target: {
-                value: hopUse
-            }
-        }
+                value: hopUse,
+            },
+        };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopUseDropdown = wrapper.find('Select');
 
@@ -80,7 +81,7 @@ describe('<RecipeHopRow />', () => {
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
     });
 
-    it("renders the Hop Type <TextInput /> with the correct props", () => {
+    it('renders the Hop Type <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(0);
 
@@ -89,20 +90,20 @@ describe('<RecipeHopRow />', () => {
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.hopType);
     });
 
-    it("calls handleHopChange with the updated hop type when the Hop Type TextInput option is changed", () => {
+    it('calls handleHopChange with the updated hop type when the Hop Type TextInput option is changed', () => {
         const hopType = 'Galaxy';
         const expectedHop = {
-            hopType: hopType,
+            hopType,
             alphaAcid: '10.0',
             amount: '2.0',
             time: '10',
-            hopUse: 'boil'
+            hopUse: 'boil',
         };
         const event = {
             target: {
-                value: hopType
-            }
-        }
+                value: hopType,
+            },
+        };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(0);
 
@@ -112,7 +113,7 @@ describe('<RecipeHopRow />', () => {
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
     });
 
-    it("renders the Hop Amount <TextInput /> with the correct props", () => {
+    it('renders the Hop Amount <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(1);
 
@@ -121,20 +122,20 @@ describe('<RecipeHopRow />', () => {
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.amount);
     });
 
-    it("calls handleHopChange with the updated hop amount when the Hop Amount TextInput option is changed", () => {
+    it('calls handleHopChange with the updated hop amount when the Hop Amount TextInput option is changed', () => {
         const hopAmount = '5';
         const expectedHop = {
             hopType: 'Mosiac',
             alphaAcid: '10.0',
             amount: hopAmount,
             time: '10',
-            hopUse: 'boil'
+            hopUse: 'boil',
         };
         const event = {
             target: {
-                value: hopAmount
-            }
-        }
+                value: hopAmount,
+            },
+        };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(1);
 
@@ -144,7 +145,7 @@ describe('<RecipeHopRow />', () => {
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
     });
 
-    it("renders the Hop Alpha Acid <TextInput /> with the correct props", () => {
+    it('renders the Hop Alpha Acid <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(2);
 
@@ -153,20 +154,20 @@ describe('<RecipeHopRow />', () => {
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.alphaAcid);
     });
 
-    it("calls handleHopChange with the updated hop alpha acid when the Hop Alpha Acid TextInput option is changed", () => {
+    it('calls handleHopChange with the updated hop alpha acid when the Hop Alpha Acid TextInput option is changed', () => {
         const alphaAcid = '12';
         const expectedHop = {
             hopType: 'Mosiac',
-            alphaAcid: alphaAcid,
+            alphaAcid,
             amount: '2.0',
             time: '10',
-            hopUse: 'boil'
+            hopUse: 'boil',
         };
         const event = {
             target: {
-                value: alphaAcid
-            }
-        }
+                value: alphaAcid,
+            },
+        };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(2);
 
@@ -176,7 +177,7 @@ describe('<RecipeHopRow />', () => {
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
     });
 
-    it("renders the Hop Time <TextInput /> with the correct props", () => {
+    it('renders the Hop Time <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(3);
 
@@ -185,7 +186,7 @@ describe('<RecipeHopRow />', () => {
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.time);
     });
 
-    it("renders the Hop Time <TextInput /> with the correct label when the hopuse is not boil", () => {
+    it('renders the Hop Time <TextInput /> with the correct label when the hopuse is not boil', () => {
         defaultProps.hop.hopUse = 'Whirlpool';
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(3);
@@ -195,20 +196,20 @@ describe('<RecipeHopRow />', () => {
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.time);
     });
 
-    it("calls handleHopChange with the updated hop time when the Hop Time TextInput option is changed", () => {
+    it('calls handleHopChange with the updated hop time when the Hop Time TextInput option is changed', () => {
         const time = '30';
         const expectedHop = {
             hopType: 'Mosiac',
             alphaAcid: '10.0',
             amount: '2.0',
-            time: time,
-            hopUse: 'boil'
+            time,
+            hopUse: 'boil',
         };
         const event = {
             target: {
-                value: time
-            }
-        }
+                value: time,
+            },
+        };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const hopTypeInput = wrapper.find('TextInput').at(3);
 
@@ -218,7 +219,7 @@ describe('<RecipeHopRow />', () => {
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
     });
 
-    it("renders one <Button /> with the correct props", () => {
+    it('renders one <Button /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const deleteHopBUtton = wrapper.find('Button');
 
@@ -227,7 +228,7 @@ describe('<RecipeHopRow />', () => {
         expect(deleteHopBUtton.prop('disabled')).to.equal(defaultProps.disableDelete);
     });
 
-    it("calls handleDeleteHop when the delete hop button is clicked", () => {
+    it('calls handleDeleteHop when the delete hop button is clicked', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
         const textInputComponent = wrapper.find('Button');
 

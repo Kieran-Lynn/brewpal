@@ -1,40 +1,40 @@
-import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import RecipeGrainRow from '../../../js/recipe/components/RecipeGrainRow';
 import Adapter from 'enzyme-adapter-react-15';
 import * as sinon from 'sinon';
+import RecipeGrainRow from '../../../js/recipe/components/RecipeGrainRow';
 import { getGrainOptions } from '../../../js/shared/utils';
+
 chai.use(sinonChai);
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const handleGrainChangeSpy = sinon.spy();
 const handleDeleteGrainSpy = sinon.spy();
-let defaultProps = { }
+let defaultProps = { };
 
 describe('<RecipeGrainRow />', () => {
-    beforeEach( () => {
+    beforeEach(() => {
         defaultProps = {
             index: 0,
-            grain: {grainType: '1', amount: '10'},
+            grain: { grainType: '1', amount: '10' },
             disableDelete: true,
             handleGrainChange: handleGrainChangeSpy,
-            handleDeleteGrain: handleDeleteGrainSpy
-        }
+            handleDeleteGrain: handleDeleteGrainSpy,
+        };
         handleGrainChangeSpy.reset();
         handleDeleteGrainSpy.reset();
     });
 
-    it("should be a div with the classname row", () => {
+    it('should be a div with the classname row', () => {
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
-        
+
         expect(wrapper.type()).to.equal('div');
         expect(wrapper.prop('className')).to.equal('row');
     });
 
-    it("renders one <Select /> with the correct props", () => {
+    it('renders one <Select /> with the correct props', () => {
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const grainTypeDropdown = wrapper.find('Select');
 
@@ -46,17 +46,17 @@ describe('<RecipeGrainRow />', () => {
         expect(grainTypeDropdown.prop('options')).to.deep.equal(getGrainOptions());
     });
 
-    it("calls handleGrainChange with the updated grain type when the Select option is changed", () => {
+    it('calls handleGrainChange with the updated grain type when the Select option is changed', () => {
         const grainType = 10;
         const expectedGrain = {
-            grainType: grainType,
-            amount: defaultProps.grain.amount
-        }
+            grainType,
+            amount: defaultProps.grain.amount,
+        };
         const event = {
             target: {
-                value: grainType
-            }
-        }
+                value: grainType,
+            },
+        };
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const grainTypeDropdown = wrapper.find('Select');
 
@@ -66,7 +66,7 @@ describe('<RecipeGrainRow />', () => {
         expect(handleGrainChangeSpy).to.have.been.calledWithMatch(expectedGrain, defaultProps.index);
     });
 
-    it("renders one <TextInput /> with the correct props", () => {
+    it('renders one <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const grainAmountInput = wrapper.find('TextInput');
 
@@ -76,17 +76,17 @@ describe('<RecipeGrainRow />', () => {
         expect(grainAmountInput.prop('value')).to.equal(defaultProps.grain.amount);
     });
 
-    it("calls handleGrainChange with the updated grain amount when the TextInput option is changed", () => {
+    it('calls handleGrainChange with the updated grain amount when the TextInput option is changed', () => {
         const grainAmount = '5';
         const expectedGrain = {
             grainType: defaultProps.grain.grainType,
-            amount: grainAmount
-        }
+            amount: grainAmount,
+        };
         const event = {
             target: {
-                value: grainAmount
-            }
-        }
+                value: grainAmount,
+            },
+        };
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const grainAmountInput = wrapper.find('TextInput');
 
@@ -96,18 +96,18 @@ describe('<RecipeGrainRow />', () => {
         expect(handleGrainChangeSpy).to.have.been.calledWithMatch(expectedGrain, defaultProps.index);
     });
 
-    it("calls handleGrainChange with the updated grain amount and filters out non numeric characters", () => {
+    it('calls handleGrainChange with the updated grain amount and filters out non numeric characters', () => {
         const grainAmount = '5aa';
         const expectedGrainAmount = '5';
         const expectedGrain = {
             grainType: defaultProps.grain.grainType,
-            amount: expectedGrainAmount
-        }
+            amount: expectedGrainAmount,
+        };
         const event = {
             target: {
-                value: grainAmount
-            }
-        }
+                value: grainAmount,
+            },
+        };
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const grainAmountInput = wrapper.find('TextInput');
 
@@ -118,7 +118,7 @@ describe('<RecipeGrainRow />', () => {
     });
 
 
-    it("renders one <Button /> with the correct props", () => {
+    it('renders one <Button /> with the correct props', () => {
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const deleteGrainButton = wrapper.find('Button');
 
@@ -127,7 +127,7 @@ describe('<RecipeGrainRow />', () => {
         expect(deleteGrainButton.prop('disabled')).to.equal(defaultProps.disableDelete);
     });
 
-    it("calls handleDeleteGrain when the delete grain button is clicked", () => {
+    it('calls handleDeleteGrain when the delete grain button is clicked', () => {
         const wrapper = shallow(<RecipeGrainRow {...defaultProps} />);
         const textInputComponent = wrapper.find('Button');
 

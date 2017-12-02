@@ -1,13 +1,11 @@
-import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import { expect } from 'chai';
-import RecipeName from '../../../js/recipe/components/RecipeName';
 import Adapter from 'enzyme-adapter-react-15';
-import * as sinon from "sinon";
+import * as sinon from 'sinon';
+import RecipeName from '../../../js/recipe/components/RecipeName';
 
-configure({adapter: new Adapter()});
-
+configure({ adapter: new Adapter() });
 
 describe('<RecipeName />', () => {
     it('should have className equal to row', () => {
@@ -17,16 +15,16 @@ describe('<RecipeName />', () => {
     });
 
     it('should have a <TextInput />', () => {
-        const wrapper = shallow(<RecipeName/>);
+        const wrapper = shallow(<RecipeName />);
 
         expect(wrapper.find('TextInput')).to.have.length(1);
     });
 
     it('should pass props to <TextInput /> ', () => {
         const props = {
-            recipeName: 'name'
+            recipeName: 'name',
         };
-        const wrapper = shallow(<RecipeName {...props}/>);
+        const wrapper = shallow(<RecipeName {...props} />);
         const textInput = wrapper.find('TextInput');
 
         expect(textInput.prop('label')).to.equal('Recipe Name');
@@ -36,16 +34,16 @@ describe('<RecipeName />', () => {
 
     it('should set handleRecipeNameChange on <TextInput />', () => {
         const onChangeSpy = sinon.spy();
-        const event = {target: {value: 'value'}};
-        let props = {
-            handleRecipeNameChange: onChangeSpy
+        const event = { target: { value: 'value' } };
+        const props = {
+            handleRecipeNameChange: onChangeSpy,
         };
-        const wrapper = shallow(<RecipeName {...props}/>);
+        const wrapper = shallow(<RecipeName {...props} />);
         const textInput = wrapper.find('TextInput');
 
         textInput.simulate('change', event);
 
         onChangeSpy.calledOnce;
-        expect(onChangeSpy.calledWith(event.target.value)).to.be.true
+        expect(onChangeSpy.calledWith(event.target.value)).to.be.true;
     });
 });

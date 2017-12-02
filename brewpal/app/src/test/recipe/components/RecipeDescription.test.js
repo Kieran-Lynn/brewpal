@@ -1,13 +1,11 @@
-import 'jsdom-global/register'
 import React from 'react';
-import { configure, shallow, render } from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import { expect } from 'chai';
-import RecipeDescription from '../../../js/recipe/components/RecipeDescription';
 import Adapter from 'enzyme-adapter-react-15';
-import * as sinon from "sinon";
+import * as sinon from 'sinon';
+import RecipeDescription from '../../../js/recipe/components/RecipeDescription';
 
-configure({adapter: new Adapter()});
-
+configure({ adapter: new Adapter() });
 
 describe('<RecipeDescription />', () => {
     it('should have className equal to row', () => {
@@ -17,16 +15,16 @@ describe('<RecipeDescription />', () => {
     });
 
     it('should have a <TextArea />', () => {
-        const wrapper = shallow(<RecipeDescription/>);
+        const wrapper = shallow(<RecipeDescription />);
 
         expect(wrapper.find('TextArea')).to.have.length(1);
     });
 
     it('should pass props to <TextArea /> ', () => {
         const props = {
-            description: 'description text'
+            description: 'description text',
         };
-        const wrapper = shallow(<RecipeDescription {...props}/>);
+        const wrapper = shallow(<RecipeDescription {...props} />);
         const textArea = wrapper.find('TextArea');
 
         expect(textArea.prop('label')).to.equal('Description');
@@ -36,16 +34,16 @@ describe('<RecipeDescription />', () => {
 
     it('should set handleDescriptionChange on <TextArea />', () => {
         const onChangeSpy = sinon.spy();
-        const event = {target: {value: 'value'}};
-        let props = {
-            handleDescriptionChange: onChangeSpy
+        const event = { target: { value: 'value' } };
+        const props = {
+            handleDescriptionChange: onChangeSpy,
         };
-        const wrapper = shallow(<RecipeDescription {...props}/>);
+        const wrapper = shallow(<RecipeDescription {...props} />);
         const textArea = wrapper.find('TextArea');
 
         textArea.simulate('change', event);
 
         onChangeSpy.calledOnce;
-        expect(onChangeSpy.calledWith(event.target.value)).to.be.true
+        expect(onChangeSpy.calledWith(event.target.value)).to.be.true;
     });
 });

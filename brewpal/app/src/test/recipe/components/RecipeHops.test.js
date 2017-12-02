@@ -1,36 +1,36 @@
-import 'jsdom-global/register'
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import RecipeHops from '../../../js/recipe/components/RecipeHops';
 import Adapter from 'enzyme-adapter-react-15';
-import * as sinon from "sinon";
+import * as sinon from 'sinon';
+import RecipeHops from '../../../js/recipe/components/RecipeHops';
+
 chai.use(sinonChai);
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const handleHopChangeSpy = sinon.spy();
 const handleDeleteHopSpy = sinon.spy();
 const handleAddHopSpy = sinon.spy();
-let defaultProps = { }
+let defaultProps = { };
 
 describe('<RecipeHops />', () => {
-    beforeEach( () => {
+    beforeEach(() => {
         defaultProps = {
             hops: [
                 {
-                    hopType: "Galaxy",
-                    alphaAcid: "14.0",
-                    amount: "3.0",
-                    time: "5",
-                    hopUse: "boil"
-                }
+                    hopType: 'Galaxy',
+                    alphaAcid: '14.0',
+                    amount: '3.0',
+                    time: '5',
+                    hopUse: 'boil',
+                },
             ],
             disableDelete: true,
             handleHopChange: handleHopChangeSpy,
             handleDeleteHop: handleDeleteHopSpy,
-            handleAddHop: handleAddHopSpy
-        }
+            handleAddHop: handleAddHopSpy,
+        };
     });
 
     it('should be a div', () => {
