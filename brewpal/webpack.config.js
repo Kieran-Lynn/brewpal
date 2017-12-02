@@ -12,13 +12,13 @@ module.exports = {
             'react-hot-loader/patch',
             'webpack-dev-server/client?http://localhost:3000',
             'webpack/hot/only-dev-server',
-            './app/app_staticfiles/js/react-render.js'
+            './app/src/js/react-render.js'
         ]
     },
 
     output: {
-        path: path.resolve('./app/app_staticfiles/bundles/'),
-        publicPath: 'http://localhost:3000/app/app_staticfiles/bundles/',
+        path: path.resolve('./app/src/bundles/'),
+        publicPath: 'http://localhost:3000/app/src/bundles/',
         filename: "[name]-[hash].js",
     },
 
