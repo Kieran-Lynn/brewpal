@@ -18,7 +18,7 @@ export default class RecipeHops extends React.Component {
                 <h3>Hops</h3>
                 {hops.map((hop, index) => (
                     <RecipeHopRow
-                        key={hop.hopType}
+                        key={index}
                         index={index}
                         hop={hop}
                         disableDelete={this.props.disableDelete}

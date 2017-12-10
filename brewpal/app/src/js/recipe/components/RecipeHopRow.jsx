@@ -59,31 +59,31 @@ export default class RecipeHopRow extends React.Component {
             <div className="row">
                 <TextInput
                     label="Hop"
-                    name="hop_type"
+                    name={`hops[${index}][name]`}
                     value={hop.hopType}
                     onChange={event => this.handleHopTypeChange(event, index)}
                 />
                 <TextInput
                     label="Amount (oz)"
-                    name="hop_amount"
+                    name={`hops[${index}][amount]`}
                     value={hop.amount}
                     onChange={event => this.handleHopAmountChange(event, index)}
                 />
                 <TextInput
                     label="Alpha Acid"
-                    name="alpha_acid"
+                    name={`hops[${index}][alpha_acid]`}
                     value={hop.alphaAcid}
                     onChange={event => this.handleAlphaAcidChange(event, index)}
                 />
                 <TextInput
                     label={hop.hopUse === 'boil' ? 'Time (min)' : 'Time (days)'}
-                    name="time"
+                    name={`hops[${index}][time]`}
                     value={hop.time}
                     onChange={event => this.handleTimeChange(event, index)}
                 />
                 <Select
                     index={index}
-                    name="hop_use"
+                    name={`hops[${index}][use]`}
                     label="Use"
                     value={hop.hopUse}
                     options={this.buildHopUseOptions()}

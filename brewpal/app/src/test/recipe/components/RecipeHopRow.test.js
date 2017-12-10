@@ -53,7 +53,7 @@ describe('<RecipeHopRow />', () => {
         expect(hopUseDropdown).to.have.length(1);
         expect(hopUseDropdown.prop('index')).to.equal(defaultProps.index);
         expect(hopUseDropdown.prop('label')).to.equal('Use');
-        expect(hopUseDropdown.prop('name')).to.equal('hop_use');
+        expect(hopUseDropdown.prop('name')).to.equal('hops[0][use]');
         expect(hopUseDropdown.prop('value')).to.equal(defaultProps.hop.hopUse);
         expect(hopUseDropdown.prop('options')).to.deep.equal(expectedHopOptions);
     });
@@ -86,7 +86,7 @@ describe('<RecipeHopRow />', () => {
         const hopTypeInput = wrapper.find('TextInput').at(0);
 
         expect(hopTypeInput.prop('label')).to.equal('Hop');
-        expect(hopTypeInput.prop('name')).to.equal('hop_type');
+        expect(hopTypeInput.prop('name')).to.equal('hops[0][name]');
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.hopType);
     });
 
@@ -118,7 +118,7 @@ describe('<RecipeHopRow />', () => {
         const hopTypeInput = wrapper.find('TextInput').at(1);
 
         expect(hopTypeInput.prop('label')).to.equal('Amount (oz)');
-        expect(hopTypeInput.prop('name')).to.equal('hop_amount');
+        expect(hopTypeInput.prop('name')).to.equal('hops[0][amount]');
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.amount);
     });
 
@@ -150,7 +150,7 @@ describe('<RecipeHopRow />', () => {
         const hopTypeInput = wrapper.find('TextInput').at(2);
 
         expect(hopTypeInput.prop('label')).to.equal('Alpha Acid');
-        expect(hopTypeInput.prop('name')).to.equal('alpha_acid');
+        expect(hopTypeInput.prop('name')).to.equal('hops[0][alpha_acid]');
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.alphaAcid);
     });
 
@@ -182,7 +182,7 @@ describe('<RecipeHopRow />', () => {
         const hopTypeInput = wrapper.find('TextInput').at(3);
 
         expect(hopTypeInput.prop('label')).to.equal('Time (min)');
-        expect(hopTypeInput.prop('name')).to.equal('time');
+        expect(hopTypeInput.prop('name')).to.equal('hops[0][time]');
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.time);
     });
 
@@ -192,7 +192,7 @@ describe('<RecipeHopRow />', () => {
         const hopTypeInput = wrapper.find('TextInput').at(3);
 
         expect(hopTypeInput.prop('label')).to.equal('Time (days)');
-        expect(hopTypeInput.prop('name')).to.equal('time');
+        expect(hopTypeInput.prop('name')).to.equal('hops[0][time]');
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.time);
     });
 

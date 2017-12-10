@@ -41,7 +41,7 @@ describe('<RecipeGrainRow />', () => {
         expect(grainTypeDropdown).to.have.length(1);
         expect(grainTypeDropdown.prop('index')).to.equal(defaultProps.index);
         expect(grainTypeDropdown.prop('label')).to.equal('Grain');
-        expect(grainTypeDropdown.prop('name')).to.equal('grainType');
+        expect(grainTypeDropdown.prop('name')).to.equal('grains[0][grain_type]');
         expect(grainTypeDropdown.prop('value')).to.equal(defaultProps.grain.grainType);
         expect(grainTypeDropdown.prop('options')).to.deep.equal(getGrainOptions());
     });
@@ -72,7 +72,7 @@ describe('<RecipeGrainRow />', () => {
 
         expect(grainAmountInput).to.have.length(1);
         expect(grainAmountInput.prop('label')).to.equal('Amount (lbs)');
-        expect(grainAmountInput.prop('name')).to.equal('grainAmount');
+        expect(grainAmountInput.prop('name')).to.equal('grains[0][amount]');
         expect(grainAmountInput.prop('value')).to.equal(defaultProps.grain.amount);
     });
 

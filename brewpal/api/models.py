@@ -16,8 +16,8 @@ class GrainType(models.Model):
 class Beer(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     name = models.CharField(max_length=200)
-    style = models.CharField(max_length=200)
-    description = models.TextField()
+    style = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
     batch_size = models.FloatField()
     yeast = models.CharField(max_length=200)
     fermentation_temp = models.FloatField()
@@ -35,7 +35,7 @@ class Grain(models.Model):
         db_table = "grains"
 
 
-class Hops(models.Model):
+class Hop(models.Model):
     name = models.CharField(max_length=200)
     amount = models.FloatField()
     alpha_acid = models.FloatField()
