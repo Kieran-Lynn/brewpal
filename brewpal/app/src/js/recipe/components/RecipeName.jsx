@@ -18,6 +18,7 @@ export default class RecipeName extends React.Component {
                     label="Recipe Name"
                     name="name"
                     value={this.props.recipeName}
+                    required
                     onChange={event => this.props.handleRecipeNameChange(event.target.value)}
                 />
             </div>

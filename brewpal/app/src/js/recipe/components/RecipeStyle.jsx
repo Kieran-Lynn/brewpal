@@ -17,6 +17,7 @@ export default class RecipeStyle extends React.Component {
                     label="Style"
                     name="style"
                     value={this.props.style}
+                    required={false}
                     onChange={event => this.props.handleStyleChange(event.target.value)}
                 />
             </div>

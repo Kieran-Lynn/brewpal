@@ -29,6 +29,7 @@ describe('<RecipeDescription />', () => {
 
         expect(textArea.prop('label')).to.equal('Description');
         expect(textArea.prop('name')).to.equal('description');
+        expect(textArea.prop('required')).to.be.false;
         expect(textArea.prop('value')).to.equal(props.description);
     });
 

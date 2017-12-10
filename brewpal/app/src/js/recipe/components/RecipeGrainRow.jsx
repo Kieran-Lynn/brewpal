@@ -47,12 +47,14 @@ export default class RecipeGrainRow extends React.Component {
                     name={`grains[${index}][grain_type]`}
                     value={grain.grainType}
                     options={this.buildGrainOptions()}
+                    required
                     onChange={event => this.handleGrainTypeChange(event, index)}
                 />
                 <TextInput
                     label="Amount (lbs)"
                     name={`grains[${index}][amount]`}
                     value={grain.amount}
+                    required
                     onChange={event => this.handleGrainAmountChange(event, index)}
                 />
                 <Button

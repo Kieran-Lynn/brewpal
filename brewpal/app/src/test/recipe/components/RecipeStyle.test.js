@@ -31,6 +31,7 @@ describe('<RecipeStyle />', () => {
 
         expect(textInput.prop('label')).to.equal('Style');
         expect(textInput.prop('name')).to.equal('style');
+        expect(textInput.prop('required')).to.be.false;
         expect(textInput.prop('value')).to.equal(props.style);
     });
 

@@ -32,16 +32,18 @@ describe('<RecipeYeast/>', () => {
 
         expect(yeastTypeInput.prop('label')).to.equal('Yeast');
         expect(yeastTypeInput.prop('name')).to.equal('yeast');
+        expect(yeastTypeInput.prop('required')).to.be.true;
         expect(yeastTypeInput.prop('value')).to.equal(defaultProps.yeast.yeastType);
     });
 
     it('should render the fermentation temp <TextInput /> with the proper props', () => {
         const wrapper = shallow(<RecipeYeast {...defaultProps} />);
-        const yeastTypeInput = wrapper.find('TextInput').at(1);
+        const fermentationTempInput = wrapper.find('TextInput').at(1);
 
-        expect(yeastTypeInput.prop('label')).to.equal('Fermentation Temp (F)');
-        expect(yeastTypeInput.prop('name')).to.equal('fermentation_temp');
-        expect(yeastTypeInput.prop('value')).to.equal(defaultProps.yeast.fermentationTemp);
+        expect(fermentationTempInput.prop('label')).to.equal('Fermentation Temp (F)');
+        expect(fermentationTempInput.prop('name')).to.equal('fermentation_temp');
+        expect(fermentationTempInput.prop('required')).to.be.true;
+        expect(fermentationTempInput.prop('value')).to.equal(defaultProps.yeast.fermentationTemp);
     });
 
     it('should call handleYeastChange with the updated yeast type when its changed', () => {
@@ -72,9 +74,9 @@ describe('<RecipeYeast/>', () => {
             handleYeastChange: handleYeastChangeSpy,
         };
         const wrapper = shallow(<RecipeYeast {...props} />);
-        const yeastTypeInput = wrapper.find('TextInput').at(1);
+        const fermentationTempInput = wrapper.find('TextInput').at(1);
 
-        yeastTypeInput.simulate('change', event);
+        fermentationTempInput.simulate('change', event);
 
         expect(handleYeastChangeSpy).to.have.been.calledOnce;
         expect(handleYeastChangeSpy).to.have.been.calledWithMatch(expectedYeast);

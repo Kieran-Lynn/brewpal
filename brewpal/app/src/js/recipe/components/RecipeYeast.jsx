@@ -31,12 +31,14 @@ export default class RecipeYeast extends React.Component {
                     label="Yeast"
                     name="yeast"
                     value={yeast.yeastType}
+                    required
                     onChange={this.handleYeastTypeChange}
                 />
                 <TextInput
                     label="Fermentation Temp (F)"
                     name="fermentation_temp"
                     value={yeast.fermentationTemp}
+                    required
                     onChange={this.handleYeastFermTempChange}
                 />
             </div>

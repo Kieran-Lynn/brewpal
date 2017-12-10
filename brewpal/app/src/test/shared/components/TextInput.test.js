@@ -29,6 +29,7 @@ describe('<TextInput/>', () => {
         const props = {
             name: 'name',
             value: 'value',
+            required: false,
             onChange: () => {},
         };
         const wrapper = shallow(<TextInput {...props} />);
@@ -37,6 +38,7 @@ describe('<TextInput/>', () => {
         expect(formControl.prop('type')).to.equal('text');
         expect(formControl.prop('name')).to.equal(props.name);
         expect(formControl.prop('value')).to.equal(props.value);
+        expect(formControl.prop('required')).to.equal(props.required);
         expect(formControl.prop('onChange')).to.equal(props.onChange);
     });
 

@@ -55,6 +55,7 @@ describe('<RecipeHopRow />', () => {
         expect(hopUseDropdown.prop('label')).to.equal('Use');
         expect(hopUseDropdown.prop('name')).to.equal('hops[0][use]');
         expect(hopUseDropdown.prop('value')).to.equal(defaultProps.hop.hopUse);
+        expect(hopUseDropdown.prop('required')).to.be.true;
         expect(hopUseDropdown.prop('options')).to.deep.equal(expectedHopOptions);
     });
 
@@ -87,6 +88,7 @@ describe('<RecipeHopRow />', () => {
 
         expect(hopTypeInput.prop('label')).to.equal('Hop');
         expect(hopTypeInput.prop('name')).to.equal('hops[0][name]');
+        expect(hopTypeInput.prop('required')).to.be.true;
         expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.hopType);
     });
 
@@ -115,11 +117,12 @@ describe('<RecipeHopRow />', () => {
 
     it('renders the Hop Amount <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(1);
+        const hopAmountInput = wrapper.find('TextInput').at(1);
 
-        expect(hopTypeInput.prop('label')).to.equal('Amount (oz)');
-        expect(hopTypeInput.prop('name')).to.equal('hops[0][amount]');
-        expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.amount);
+        expect(hopAmountInput.prop('label')).to.equal('Amount (oz)');
+        expect(hopAmountInput.prop('name')).to.equal('hops[0][amount]');
+        expect(hopAmountInput.prop('required')).to.be.true;
+        expect(hopAmountInput.prop('value')).to.equal(defaultProps.hop.amount);
     });
 
     it('calls handleHopChange with the updated hop amount when the Hop Amount TextInput option is changed', () => {
@@ -137,9 +140,9 @@ describe('<RecipeHopRow />', () => {
             },
         };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(1);
+        const hopAmountInput = wrapper.find('TextInput').at(1);
 
-        hopTypeInput.simulate('change', event);
+        hopAmountInput.simulate('change', event);
 
         expect(handleHopChangeSpy).to.have.been.calledOnce;
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
@@ -147,11 +150,12 @@ describe('<RecipeHopRow />', () => {
 
     it('renders the Hop Alpha Acid <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(2);
+        const hopAAInput = wrapper.find('TextInput').at(2);
 
-        expect(hopTypeInput.prop('label')).to.equal('Alpha Acid');
-        expect(hopTypeInput.prop('name')).to.equal('hops[0][alpha_acid]');
-        expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.alphaAcid);
+        expect(hopAAInput.prop('label')).to.equal('Alpha Acid');
+        expect(hopAAInput.prop('name')).to.equal('hops[0][alpha_acid]');
+        expect(hopAAInput.prop('required')).to.be.true;
+        expect(hopAAInput.prop('value')).to.equal(defaultProps.hop.alphaAcid);
     });
 
     it('calls handleHopChange with the updated hop alpha acid when the Hop Alpha Acid TextInput option is changed', () => {
@@ -169,9 +173,9 @@ describe('<RecipeHopRow />', () => {
             },
         };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(2);
+        const hopAAInput = wrapper.find('TextInput').at(2);
 
-        hopTypeInput.simulate('change', event);
+        hopAAInput.simulate('change', event);
 
         expect(handleHopChangeSpy).to.have.been.calledOnce;
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
@@ -179,21 +183,22 @@ describe('<RecipeHopRow />', () => {
 
     it('renders the Hop Time <TextInput /> with the correct props', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(3);
+        const hopTimeInput = wrapper.find('TextInput').at(3);
 
-        expect(hopTypeInput.prop('label')).to.equal('Time (min)');
-        expect(hopTypeInput.prop('name')).to.equal('hops[0][time]');
-        expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.time);
+        expect(hopTimeInput.prop('label')).to.equal('Time (min)');
+        expect(hopTimeInput.prop('name')).to.equal('hops[0][time]');
+        expect(hopTimeInput.prop('required')).to.be.true;
+        expect(hopTimeInput.prop('value')).to.equal(defaultProps.hop.time);
     });
 
     it('renders the Hop Time <TextInput /> with the correct label when the hopuse is not boil', () => {
         defaultProps.hop.hopUse = 'Whirlpool';
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(3);
+        const hopeTimeInput = wrapper.find('TextInput').at(3);
 
-        expect(hopTypeInput.prop('label')).to.equal('Time (days)');
-        expect(hopTypeInput.prop('name')).to.equal('hops[0][time]');
-        expect(hopTypeInput.prop('value')).to.equal(defaultProps.hop.time);
+        expect(hopeTimeInput.prop('label')).to.equal('Time (days)');
+        expect(hopeTimeInput.prop('name')).to.equal('hops[0][time]');
+        expect(hopeTimeInput.prop('value')).to.equal(defaultProps.hop.time);
     });
 
     it('calls handleHopChange with the updated hop time when the Hop Time TextInput option is changed', () => {
@@ -211,9 +216,9 @@ describe('<RecipeHopRow />', () => {
             },
         };
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const hopTypeInput = wrapper.find('TextInput').at(3);
+        const hopTimeInput = wrapper.find('TextInput').at(3);
 
-        hopTypeInput.simulate('change', event);
+        hopTimeInput.simulate('change', event);
 
         expect(handleHopChangeSpy).to.have.been.calledOnce;
         expect(handleHopChangeSpy).to.have.been.calledWithMatch(expectedHop, defaultProps.index);
@@ -230,9 +235,9 @@ describe('<RecipeHopRow />', () => {
 
     it('calls handleDeleteHop when the delete hop button is clicked', () => {
         const wrapper = shallow(<RecipeHopRow {...defaultProps} />);
-        const textInputComponent = wrapper.find('Button');
+        const deleteHopButton = wrapper.find('Button');
 
-        textInputComponent.simulate('click');
+        deleteHopButton.simulate('click');
 
         expect(handleDeleteHopSpy).to.have.been.calledOnce;
         expect(handleDeleteHopSpy).to.have.been.calledWithMatch(defaultProps.hop);

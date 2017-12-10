@@ -18,6 +18,7 @@ export default class RecipeDescription extends React.Component {
                     label="Description"
                     name="description"
                     value={this.props.description}
+                    required={false}
                     onChange={event => this.props.handleDescriptionChange(event.target.value)}
                 />
             </div>

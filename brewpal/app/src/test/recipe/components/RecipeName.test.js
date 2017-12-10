@@ -29,6 +29,7 @@ describe('<RecipeName />', () => {
 
         expect(textInput.prop('label')).to.equal('Recipe Name');
         expect(textInput.prop('name')).to.equal('name');
+        expect(textInput.prop('required')).to.be.true;
         expect(textInput.prop('value')).to.equal(props.recipeName);
     });
 

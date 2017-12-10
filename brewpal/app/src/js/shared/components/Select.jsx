@@ -13,6 +13,7 @@ export default class Select extends React.Component {
         name: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
         options: PropTypes.array.isRequired,
+        required: PropTypes.bool.isRequired,
         onChange: PropTypes.func.isRequired,
     }
 
@@ -33,6 +34,7 @@ export default class Select extends React.Component {
                     componentClass="select"
                     name={this.props.name}
                     value={this.props.value}
+                    required={this.props.required}
                     onChange={event => this.props.onChange(event, this.props.index)}
                 >
                     {this.getOptionElements()}

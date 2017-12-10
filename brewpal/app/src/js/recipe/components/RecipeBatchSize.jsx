@@ -15,6 +15,7 @@ export default class RecipeBatchSize extends React.Component {
                     label="Batch Size (gal)"
                     name="batch_size"
                     value={this.props.batchSize}
+                    required
                     onChange={event => this.props.handleBatchSizeChange(event.target.value)}
                 />
             </div>

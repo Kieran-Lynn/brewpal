@@ -30,6 +30,7 @@ describe('<RecipeBatchSize />', () => {
 
         expect(textInput.prop('label')).to.equal('Batch Size (gal)');
         expect(textInput.prop('name')).to.equal('batch_size');
+        expect(textInput.prop('required')).to.be.true;
         expect(textInput.prop('value')).to.equal(props.batchSize);
     });
 
