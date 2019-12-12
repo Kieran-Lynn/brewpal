@@ -10,6 +10,7 @@ import RecipeNameContainer from '../containers/RecipeNameContainer';
 import RecipeStyleContainer from '../containers/RecipeStyleContainer';
 import RecipeDescriptionContainer from '../containers/RecipeDescriptionContainer';
 import RecipeBatchSizeContainer from '../containers/RecipeBatchSizeContainer';
+import styles from '../../../css/recipe/recipe.css';
 
 export default class Recipe extends React.Component {
     saveRecipe = (event) => {
@@ -25,18 +26,20 @@ export default class Recipe extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <h1>Recipe</h1>
-                <form onSubmit={this.saveRecipe}>
-                    <RecipeNameContainer />
-                    <RecipeStyleContainer />
-                    <RecipeBatchSizeContainer />
-                    <RecipeDescriptionContainer />
-                    <RecipeYeastContainer />
-                    <RecipeGrainsContainer />
-                    <RecipeHopsContainer />
-                    <Button type="submit">Save Recipe</Button>
-                </form>
+            <div className={styles.recipeWrapper}>
+                <div className="container-fluid">
+                    <h1>Recipe</h1>
+                    <form onSubmit={this.saveRecipe}>
+                        <RecipeNameContainer />
+                        <RecipeStyleContainer />
+                        <RecipeBatchSizeContainer />
+                        <RecipeDescriptionContainer />
+                        <RecipeYeastContainer />
+                        <RecipeGrainsContainer />
+                        <RecipeHopsContainer />
+                        <Button type="submit">Save Recipe</Button>
+                    </form>
+                </div>
             </div>
         );
     }
